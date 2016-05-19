@@ -1,6 +1,5 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
-#!/bin/bash
 
 function jumpto 
 {
