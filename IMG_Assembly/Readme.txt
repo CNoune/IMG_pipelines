@@ -13,7 +13,7 @@ The pipeline requires the following software pre-installed and in your PATH:
 3. BEDtools
 4. VCFtools
 5. BCFtools
-6. TopHat/bam2fastx
+6. bam2fastx as part of the TopHat package
 
 The pipeline requires the following software installed/downloaded:
 Note: Make sure the software below are NOT in your PATH. You will specify where the software is located and the pipeline will do the rest.
@@ -21,9 +21,7 @@ Note: Make sure the software below are NOT in your PATH. You will specify where 
 2. Kmergenie
 3. Tadpole as part of the BBmap package
 
-Furthermore, the final step in this pipeline is to take your merged data-set and complete the mapping and concensus generation in
-Geneious. If you do not have Geneious, you can use something equivalent. Eventually I will code extra steps into the pipeline for users
-who do not have Geneious.
+Furthermore, the final step in this pipeline is to take your merged data-set and complete the mapping and concensus generation in Geneious. If you do not have Geneious, you can use something equivalent. Eventually I will code extra steps into the pipeline for users who do not have Geneious.
 
 # Installation and Running
 
