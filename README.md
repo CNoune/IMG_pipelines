@@ -10,7 +10,6 @@ https://www.researchgate.net/profile/Christopher_Noune
 # Citing the Assembly Pipeline
 
 Noune, C. and C. Hauxwell (2016). "Complete Genome Sequences of Seven Helicoverpa armigera SNPV-AC53-Derived Strains." Genome announcements 4(3).
-	Wild-type baculovirus isolates typically consist of multiple strains. We report the full genome sequences of seven alphabaculovirus strains derived by passage through tissue culture from Helicoverpa armigera SNPV-AC53 (KJ909666).
 
 # Citing the Universal Genotyping and Abundance Determination Pipline
 
