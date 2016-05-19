@@ -1,5 +1,7 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
+#!/bin/bash
+
 function jumpto 
 {
     label=$1
@@ -261,8 +263,23 @@ assembly:
 				Final_output=`zenity --file-selection --directory`
 				echo "Please Specify Output Name for Final Merged data followed by .fasta"
 				read Final_name
+				echo "Press [ENTER] to Specify FASTQ file 1"
+				read enter
+				Fastq1=`zenity --file-selection`
+				echo "Press [ENTER] to Specify FASTQ file 2. Note: If you do not have a second FASTQ file, press cancel on the dialog box"
+				read enter
+				Fastq2=`zenity --file-selection`
+				echo "Press [ENTER] to Specify the Output Directory for converted FASTQ to FASTA reads"
+				read enter
+				fastq2fasta_out=`zenity --file-selection --directory`
+				echo "Please Specify the Output Name for Converted FASTQ 1"
+				read fastq1_name
+				echo "Please Specify the Output Name for Converted FASTQ 2. Note: If you do not have a second FASTQ file, press [ENTER]"
+				read fastq2_name
+				fastq_to_fasta -i $Fastq1 -o $fastq2fasta_out/$fastq1_name
+				fastq_to_fasta -i $Fastq2 -o $fastq2fasta_out/$fastq2_name
 				$tadpole in=$BAM2FASTA out=$denovo_out/$denovo k=$k
-				cat $BAM2FASTA $denovo_out/$denovo > $Final_output/$Final_name
+				cat $BAM2FASTA $fastq2fasta_out/$fastq1_name $fastq2fasta_out/$fastq2_name $denovo_out/$denovo > $Final_output/$Final_name
 				jumpto finish
 			if ["$choose_data" = yes]
 			then jumpto choose_data_pipe
@@ -282,8 +299,23 @@ assembly:
 				Final_output=`zenity --file-selection --directory`
 				echo "Please Specify Output Name for Final Merged data followed by .fasta"
 				read Final_name
+				echo "Press [ENTER] to Specify FASTQ file 1"
+				read enter
+				Fastq1=`zenity --file-selection`
+				echo "Press [ENTER] to Specify FASTQ file 2. Note: If you do not have a second FASTQ file, press cancel on the dialog box"
+				read enter
+				Fastq2=`zenity --file-selection`
+				echo "Press [ENTER] to Specify the Output Directory for converted FASTQ to FASTA reads"
+				read enter
+				fastq2fasta_out=`zenity --file-selection --directory`
+				echo "Please Specify the Output Name for Converted FASTQ 1"
+				read fastq1_name
+				echo "Please Specify the Output Name for Converted FASTQ 2. Note: If you do not have a second FASTQ file, press [ENTER]"
+				read fastq2_name
+				fastq_to_fasta -i $Fastq1 -o $fastq2fasta_out/$fastq1_name
+				fastq_to_fasta -i $Fastq2 -o $fastq2fasta_out/$fastq2_name
 				$tadpole in=$BAM2FASTA out=$denovo_out/$denovo k=$k
-				cat $BAM2FASTA $denovo_out/$denovo > $Final_output/$Final_name
+				cat $BAM2FASTA $fastq2fasta_out/$fastq1_name $fastq2fasta_out/$fastq2_name $denovo_out/$denovo > $Final_output/$Final_name
 				jumpto finish
 	if ["$next" = n]
 	then jumpto finish
