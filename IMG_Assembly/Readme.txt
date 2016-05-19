@@ -1,6 +1,5 @@
 # DISCLAIMER
-Firstly, this has only been tested and used in Ubuntu. I am not responsible for any issues or customisations that you implement or 
-that may happen when the pipeline is used. 
+Firstly, this has only been tested and used in Ubuntu. I am not responsible for any issues or customisations that you implement or that may happen when the pipeline is used. 
 
 Don't forget to cite the pipeline and all of the software used.
 
