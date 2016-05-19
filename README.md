@@ -1,5 +1,5 @@
 # IMG_pipelines
-Bash pipelines to help make data analysis easy
+Bash pipelines from the Invertebrate Microbiology Group at the Queensland University of Technology to help make data analysis easy
 # Intro
 These pipelines were built to orginally analyse baculoviruses and are essentially wrappers for existing software but pre-optomised to help get rid of any guess work. The pipelines require various software to be pre-installed before running so make sure you read each individual readme. If you use the pipelines please don't forget to cite them and cite the software it uses.
 Thanks!
