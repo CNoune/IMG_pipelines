@@ -162,11 +162,12 @@ initial:
 			echo "Press [ENTER] to specify where GATK is located"
 			read enter
 			GATK=`zenity --file-selection`
-			jumpto cns_gen
+			jumpto ref_spec
 		if [ "$GATK_loc" = n ]		
-		then jumpto cns_gen
+		then jumpto ref_spec
 		fi
 		done
+		ref_spec:
 		echo "Do you wish to specify a reference again (y/n)?"
 		read choose_ref
 			echo "Do you wish to specify the reference file (y/n)?"
