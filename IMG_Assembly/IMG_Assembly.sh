@@ -1,6 +1,7 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
 # IMG_Assembly - version 1.5.3
+# Copyright (c) 2016 Christopher Noune
 function jumpto 
 {
     label=$1
