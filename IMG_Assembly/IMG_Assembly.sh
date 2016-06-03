@@ -1,6 +1,7 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
-# IMG_Assembly - version 1.5
+# IMG_Assembly - version 1.5.2
+# Copyright (c) 2016 Christopher Noune
 function jumpto 
 {
     label=$1
@@ -73,13 +74,13 @@ next=y
 		Ref=`zenity --file-selection`
 		echo "Press [ENTER] to specify an output directory for the sequence dictionary"
 		read enter
-		Dict_Directory=`zenity --file-selection --directory`
-		echo "Please specify a name for the Output followed by .dict"
-		read dict
+		Dict_Out=`zenity --file-selection --directory`
 		echo "Indexing has begun"
 		bwa index $Ref
 		samtools faidx $Ref
-		picard-tools CreateSequenceDictionary R=$Ref O=$Dict_Directory/$dict
+		Dict_name=$(basename "$Ref" .fasta)
+		Dict_final=$Dict_Out/$Dict_name.dict
+		picard-tools CreateSequenceDictionary R=$Ref O=$Dict_final
 		echo "Indexing is complete"
 		jumpto map
 	if ["$next" = n]
@@ -117,10 +118,11 @@ map:
 		echo "Press [ENTER] to specify output directory"
 		read enter
 		SAM_output=`zenity --file-selection --directory`
-		echo "Please specify output name followed by .sam"
-		read SAM
+		echo "Please specify SAM output name"
+		read SAM_name
+		SAM=$SAM_output/$SAM_name.sam
 		echo "Mapping has begun"
-		bwa mem $Ref $Fastq1 $Fastq2 -t $t > $SAM_output/$SAM
+		bwa mem $Ref $Fastq1 $Fastq2 -t $t > $SAM
 		echo "Mapping is complete"
 		jumpto bam	
 	if ["$next" = n]
@@ -162,12 +164,11 @@ initial:
 			echo "Press [ENTER] to specify where GATK is located"
 			read enter
 			GATK=`zenity --file-selection`
-			jumpto ref_spec
+			jumpto cns_gen
 		if [ "$GATK_loc" = n ]		
-		then jumpto ref_spec
+		then jumpto cns_gen
 		fi
 		done
-		ref_spec:
 		echo "Do you wish to specify a reference again (y/n)?"
 		read choose_ref
 			echo "Do you wish to specify the reference file (y/n)?"
@@ -187,28 +188,30 @@ initial:
 		echo "Press [ENTER] to specify output directory for VCF file"
 		read enter
 		VCF_out=`zenity --file-selection --directory`
-		echo "Please specify output file name followed by .vcf"
-		read VCF
-		echo "Press [ENTER] to select Sorted BAM file"
+		echo "Please specify VCF output name"
+		read VCF_name
+		VCF=$VCF_out/$VCF_name.vcf
+		echo "Press [ENTER] to select sorted BAM file"
 		read enter
 		BAM=`zenity --file-selection`
 		echo "Press [ENTER] to specify output directory for bed file"
 		read enter
 		BED_out=`zenity --file-selection --directory`
-		echo "Please specify Output File Name followed by .bed"
-		read bed
+		echo "Please specify BED output name"
+		read bed_name
+		BED=$BED_out/$BED_name.bed
 		echo "Press [ENTER] to select an output directory for Initial Consensus Sequence"
 		read enter
 		CNS_out=`zenity --file-selection --directory`
-		echo "Please specify Output File Name followed by .fasta"
-		read CNS
+		echo "Please specify initial consensus sequence name"
+		read CNS_name
 		echo "Please specify mergeBed overlap value"
 		read d
 		echo "Initial consensus generation has begun"
-		Init_CNS=$CNS_out/$CNS
-		genomeCoverageBed -bg -split -ibam $BAM | mergeBed -d $d | samtools mpileup -uf $Ref $BAM -l stdin | bcftools view -cg -> $VCF_out/$VCF
-		genomeCoverageBed -bg -split -ibam $BAM | mergeBed -d -> $BED_out/$bed
-		java -jar $GATK -T FastaAlternateReferenceMaker -R $Ref -o $Init_CNS  --variant $VCF_out/$VCF -L $BED_out/$bed
+		Init_CNS=$CNS_out/$CNS_name.fasta
+		genomeCoverageBed -bg -split -ibam $BAM | mergeBed -d $d | samtools mpileup -uf $Ref $BAM -l stdin | bcftools view -cg -> $VCF
+		genomeCoverageBed -bg -split -ibam $BAM | mergeBed -d -> $BED
+		java -jar $GATK -T FastaAlternateReferenceMaker -R $Ref -o $Init_CNS  --variant $VCF -L $BED
 		echo "Initial consensus generation is complete"		
 		jumpto bam2fasta
 	if ["$next" = n]
@@ -226,10 +229,11 @@ bam2fasta:
 		echo "Press [ENTER] to specify output directory"
 		read enter
 		BAM_Reads_OUT=`zenity --file-selection --directory`
-		echo "Please specify output name followed by .fasta"
-		read BAM_reads
+		echo "Please specify bam2fasta output name"
+		read BAM_reads_name
+		$BAM_Fasta=$BAM_Reads_OUT/$BAM_reads_name.fasta
 		echo "BAM2Fasta conversion has begun"
-		bam2fastx -N $BAM -o $BAM_Reads_OUT/$BAM_reads --fasta -M
+		bam2fastx -N $BAM -o $BAM_Fasta --fasta -M
 		echo "BAM2Fasta conversion is complete"
 		jumpto kmer
 	if ["$next" = n]
@@ -320,13 +324,15 @@ assembly:
 				echo "Press [ENTER] to specify denovo assembly output folder"
 				read enter
 				denovo_out=`zenity --file-selection --directory`		
-				echo "Please specify output name for denovo assembly followed by .fasta"
-				read denovo
+				echo "Please specify output name for denovo assembly"
+				read denovo_name
+				$denovo=$denovo_out/$denovo_name.fasta
 				echo "Press [ENTER] to specify output directory for final merged data"
 				read enter
 				final_output=`zenity --file-selection --directory`
-				echo "Please specify output name for final merged data followed by .fasta"
-				read final_name				
+				echo "Please specify output name for final merged data "
+				read final_name
+				Final_merged=$final_output/$final_name.fasta	
 				echo "Press [ENTER] to specify FASTQ file 1"
 				read enter
 				Fastq1=`zenity --file-selection`
@@ -347,10 +353,10 @@ assembly:
 				fastq_to_fasta -i $Fastq2 -o $fastq2fasta_out/$fastq2_name
 				echo "FASTQ to FASTA conversion is complete"
 				echo "Tadpole denovo assembly has begun"
-				$tadpole in=$BAM2FASTA out=$denovo_out/$denovo k=$k
+				$tadpole in=$BAM2FASTA out=$denovo k=$k
 				echo "Tadpole denovo assembly is complete"
 				echo "Final merge has begun"
-				cat $BAM2FASTA $Init_CNS $fastq2fasta_out/$fastq1_name $fastq2fasta_out/$fastq2_name $denovo_out/$denovo > $final_output/$final_name
+				cat $BAM2FASTA $Init_CNS $fastq2fasta_out/$fastq1_name $fastq2fasta_out/$fastq2_name $denovo_out/$denovo > $Final_merged
 				echo "Final merge is complete"				
 				jumpto finish
 	if ["$next" = n]
