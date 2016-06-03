@@ -1,7 +1,6 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
-# IMG_Assembly - version 1.5.2
-# Copyright (c) 2016 Christopher Noune
+# IMG_Assembly - version 1.5.3
 function jumpto 
 {
     label=$1
@@ -169,8 +168,6 @@ initial:
 		then jumpto cns_gen
 		fi
 		done
-		echo "Do you wish to specify a reference again (y/n)?"
-		read choose_ref
 			echo "Do you wish to specify the reference file (y/n)?"
 			read choose_ref	
 			while [ "$choose_ref" = y ]
