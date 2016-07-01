@@ -13,6 +13,8 @@ Noune, C. and C. Hauxwell (2016). "Complete Genome Sequences of Seven Helicoverp
 
 # Citing IMG_GAP
 
+# Citing IMG_RClust
+
 # Software Citations
 The pipelines uses the following software citations:
   
@@ -43,3 +45,22 @@ The pipelines uses the following software citations:
   Milne I, Stephen G, Bayer M, Cock PJA, Pritchard L, Cardle L, et al. Using Tablet for visual exploration of second-generation sequencing data. Briefings in Bioinformatics. 2013;14(2):193-202. doi: 10.1093/bib/bbs012.
   
   Milne I, Bayer M, Cardle L, Shaw P, Stephen G, Wright F, et al. Tablet—next generation sequence assembly visualization. Bioinformatics (Oxford, England). 2010;26(3):401-2. doi: 10.1093/bioinformatics/btp666. PubMed PMID: PMC2815658.
+  
+  Paradis E, Claude J, Strimmer K. APE: Analyses of Phylogenetics and Evolution in R language. Bioinformatics (Oxford, England). 2004;20(2):289-90. doi: 10.1093/bioinformatics/btg412.
+  
+  Team RC. R: A language and environment for statistical computing. 2013.
+  
+  MacQueen J, editor Some methods for classification and analysis of multivariate observations. Proceedings of the fifth Berkeley symposium on mathematical statistics and probability; 1967: Oakland, CA, USA.
+  
+  Lloyd S. Least squares quantization in PCM. IEEE transactions on information theory. 1982;28(2):129-37.
+  
+  Hartigan JA, Wong MA. Algorithm AS 136: A k-means clustering algorithm. Journal of the Royal Statistical Society Series C (Applied Statistics). 1979;28(1):100-8.
+  
+  Forgy EW. Cluster analysis of multivariate data: efficiency versus interpretability of classifications. Biometrics. 1965;21:768-9.
+  
+  Fraley C, Raftery AE. MCLUST: Software for model-based cluster analysis. Journal of Classification. 1999;16(2):297-306.
+  
+  Fraley C, Raftery AE. MCLUST version 3: an R package for normal mixture modeling and model-based clustering. DTIC Document, 2006.
+
+
+
