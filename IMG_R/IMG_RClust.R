@@ -20,7 +20,7 @@ summary(validation)
 plot(validation) #Select the bayesian information criterion (BIC) result and export it.
 
 #Kmeans clustering - iter.max is bootstrapping the results
-fitted_model <- kmeans(standard_distance, "clusters", iter.max = 100) #creating a fitted model
+fitted_model <- kmeans(standard_distance, "put the cluster number here from MCLUST/Manual calculation", iter.max = 100) #creating a fitted model
 cluster_means <- aggregate(standard_distance,by=list(fitted_model$cluster),FUN=mean) #determines clustering means
 final_results <- data.frame(standard_distance, fitted_model$cluster) #creates the final results with clusters
 
