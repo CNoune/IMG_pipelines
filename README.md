@@ -1,4 +1,4 @@
-# IMG_pipelines
+# IMG_Pipelines
 Bash pipelines from the Invertebrate Microbiology Group at the Queensland University of Technology to help make data analysis easy.
 # Intro
 These pipelines were built to orginally analyse baculoviruses and are essentially wrappers for existing software but pre-optomised to help get rid of any guess work. The pipelines require various software to be pre-installed before running so make sure you read each individual readme. If you use the pipelines please don't forget to cite them and cite the software it uses.
@@ -7,11 +7,11 @@ Thanks!
 Christopher Noune
 
 https://www.researchgate.net/profile/Christopher_Noune
-# Citing the Assembly Pipeline
+# Citing IMG_AP
 
 Noune, C. and C. Hauxwell (2016). "Complete Genome Sequences of Seven Helicoverpa armigera SNPV-AC53-Derived Strains." Genome announcements 4(3).
 
-# Citing the Universal Genotyping and Abundance Determination Pipline
+# Citing IMG_GAP
 
 # Software Citations
 The pipelines uses the following software citations:
