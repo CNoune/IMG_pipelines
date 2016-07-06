@@ -1,6 +1,15 @@
-#Install Packages
-install.packages("mclust")
-install.packages("ape")
+# v1.5
+
+#Install Packages - Function found on (http://stackoverflow.com/questions/9341635/check-for-installed-packages-before-running-install-packages)
+packages<-function(x){
+  x<-as.character(match.call()[[2]])
+  if (!require(x,character.only=TRUE)){
+    install.packages(pkgs=x,repos="http://cran.r-project.org")
+    require(x,character.only=TRUE)
+  }
+}
+packages(mclust)
+packages(ape)
 
 #Determine Clusters
 library(ape)
