@@ -7,9 +7,17 @@ Thanks!
 Christopher Noune
 
 https://www.researchgate.net/profile/Christopher_Noune
+
+#Citing IMG_Pipelines
+
+https://zenodo.org/badge/latestdoi/24010/CNoune/IMG_pipelines
+
+Below you will find the individual citations for each pipeline
+
 # Citing IMG_AP
 
 Noune, C. and C. Hauxwell (2016). "Complete Genome Sequences of Seven Helicoverpa armigera SNPV-AC53-Derived Strains." Genome announcements 4(3).
+
 
 # Citing IMG_GAP
 
