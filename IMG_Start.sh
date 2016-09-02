@@ -21,7 +21,7 @@ do
             ;;
 	"Install Most Packages")
             echo "You have selected to install most of the required packages. This requires you to input your superuser password. You will need to download GATK seperately. Biostars175929 and bbmap will be found in the IMG_pipelines folder."
-		sudo apt-get install bwa openjdk-8-jdk openjdk-8-jre samtools fastx-toolkit tophat fastqc picard-tools git gradle libxml2 libxml2-dev
+		sudo apt-get install bwa openjdk-8-jdk openjdk-8-jre samtools fastx-toolkit tophat libtool autoconf fastqc picard-tools git gradle libxml2 libxml2-dev
 		wget 'https://sourceforge.net/projects/bbmap/files/latest/latest_bbmap.tar.gz'
 		git clone git://git.gnome.org/libxslt
 		git clone "https://github.com/samtools/htsjdk"
