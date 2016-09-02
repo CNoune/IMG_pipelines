@@ -26,7 +26,7 @@ do
 		git clone git://git.gnome.org/libxslt
 		git clone "https://github.com/samtools/htsjdk"
 		git clone "https://github.com/lindenb/jvarkit.git"
-		tar -xvcf latest_bbmap.tar.gz
+		tar xf latest_bbmap.tar.gz
 		mv bbmap/ IMG_pipelines/
 		rm latest_bbmap.tar.gz
 		cd libxslt
