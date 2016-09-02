@@ -13,7 +13,7 @@ do
 		bash IMG_pipelines/IMG_AP/IMG_AP.sh
             ;;
         "IMG_GAP")
-            echo "You have selected IMG_AP"
+            echo "You have selected IMG_GAP"
 		bash IMG_pipelines/IMG_GAP/IMG_GAP.sh
             ;;
         "IMG_R")
