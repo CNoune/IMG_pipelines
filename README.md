@@ -8,11 +8,17 @@ Christopher Noune
 
 https://www.researchgate.net/profile/Christopher_Noune
 
-#Citing IMG_Pipelines
+# Citing IMG_Pipelines
 
 https://zenodo.org/badge/latestdoi/24010/CNoune/IMG_pipelines
 
 Below you will find the individual citations for each pipeline
+
+# Installation
+
+Run bash IMG_Start.sh
+Select option 4 to install most packages
+Select the pipeline you wish to use
 
 # Citing IMG_AP
 
