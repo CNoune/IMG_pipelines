@@ -17,7 +17,9 @@ Below you will find the individual citations for each pipeline
 # Installation
 
 Run bash IMG_Start.sh
+
 Select option 4 to install most packages
+
 Select the pipeline you wish to use
 
 # Citing IMG_AP
