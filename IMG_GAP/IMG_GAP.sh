@@ -1,11 +1,11 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
-# IMG_GAP - version 1.0
+# IMG_GAP - version 1.0.1
 # Copyright (c) 2016 Christopher Noune
 FILETIME=`date +%T`
 FILEDATE=`date +%F`
 FILEDATETIME=$FILEDATE-$FILETIME
-LOGFILE=$PWD/IMG_GAP_Logging.$FILEDATETIME.log
+LOGFILE=IMG_pipelines/IMG_GAP/Logs/IMG_GAP_Logging.$FILEDATETIME.log
 exec &> >(tee -a $LOGFILE >&2 )
 
 function jumpto 
