@@ -1,6 +1,6 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
-# IMG_AP - version 1.5.3
+# IMG_AP - version 1.5.4
 # Copyright (c) 2016 Christopher Noune
 function jumpto 
 {
@@ -208,7 +208,7 @@ initial:
 		echo "Initial consensus generation has begun"
 		Init_CNS=$CNS_out/$CNS_name.fasta
 		genomeCoverageBed -bg -split -ibam $BAM | mergeBed -d $d | samtools mpileup -uf $Ref $BAM -l stdin | bcftools view -cg -> $VCF
-		genomeCoverageBed -bg -split -ibam $BAM | mergeBed -d -> $BED
+		genomeCoverageBed -bg -split -ibam $BAM | mergeBed -d $d > $BED
 		java -jar $GATK -T FastaAlternateReferenceMaker -R $Ref -o $Init_CNS  --variant $VCF -L $BED
 		echo "Initial consensus generation is complete"		
 		jumpto bam2fasta
