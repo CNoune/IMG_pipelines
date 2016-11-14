@@ -1,6 +1,6 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
-# IMG_AP - version 1.5.4
+# IMG_AP - version 1.5.5
 # Copyright (c) 2016 Christopher Noune
 function jumpto 
 {
@@ -144,7 +144,7 @@ bam:
 		echo "Please specify output file name"
 		read BAM_conv
 		echo "BAM sorting and conversion has begun"
-		samtools view -bS $SAM_output/$SAM | samtools sort - $BAM_out/$BAM_conv
+		samtools view -bS $SAM | samtools sort - $BAM_out/$BAM_conv
 		echo "BAM sorting and conversion has ended"
 		jumpto initial
 	if ["$next" = n]
