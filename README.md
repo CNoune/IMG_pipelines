@@ -28,6 +28,7 @@ You must always run IMG_Start.sh first to launch each pipeline otherwise the bac
 # Citing IMG_AP
 
 Noune, C. and C. Hauxwell (2016). "Complete Genome Sequences of Seven Helicoverpa armigera SNPV-AC53-Derived Strains." Genome announcements 4(3).
+
 Noune, C.; Hauxwell, C. Comparative Analysis of HaSNPV-AC53 and Derived Strains. Viruses 2016, 8, 280.
 
 
