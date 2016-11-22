@@ -17,11 +17,13 @@ Below you will find the individual citations for each pipeline
 # Installation
 You need to have Java 1.8 as your default otherwise the required packages will not compile. IMG_Start will automatically download and install 1.8 but it will not make it the default java unless you have no other versions installed.
 
-Run bash IMG_pipelines/IMG_Start.sh or cd IMG_pipelines/ | bash IMG_Start.sh
+Run bash IMG_pipelines/IMG_Start.sh
 
 Select option 4 to install most packages
 
 Select the pipeline you wish to use
+
+You must always run IMG_Start.sh first to launch each pipeline otherwise the backends and working directories wont be set. 
 
 # Citing IMG_AP
 
