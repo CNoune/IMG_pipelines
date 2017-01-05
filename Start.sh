@@ -1,10 +1,10 @@
 #!/bin/bash
-# IMG_Start - version 2.0 - build 3
+# Start - build 4
 # Copyright (c) 2016 Christopher Noune
 
-echo "Welcome "$User" to IMG Pipelines. Please select a pipeline below to begin"
+echo "Welcome "$User" to the Invertebrate Microbiology Group pipelines. Please select a pipeline below to begin"
 PS3='Please enter your choice: '
-options=("IMG_AP" "IMG_bootMAP" "IMG-GAP Build 13 - Experimental" "Install Most Packages" "Quit")
+options=("IMG_AP" "MetaGaAP" "Install Most Packages" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -12,15 +12,10 @@ do
             echo "You have selected IMG_AP"
 		bash IMG_pipelines/IMG_AP/IMG_AP.sh
             ;;
-        "IMG_bootMAP - not available yet")
-            echo "You have selected IMG_bootMAP"
-		bash IMG_pipelines/IMG_bootMAP/IMG_bootMAP_Back-ends/Set_wrk_dir.sh
-		echo -e "IMG_bootMAP Complete. Please type: \n(1) for IMG_AP \n(2) for IMG_GAP \n(3) for IMG_bootMAP \n(5) to quit."
-            ;;
-        "IMG-GAP Build 13 - Experimental")
-            echo "You have selected IMG_GAPv2. Note: This is currently experimental and contains many bugs."
-		bash IMG_pipelines/IMG_GAP/IMG_GAP_Back-ends/Set_wrk_dir.sh
-		echo -e "IMG_GAP Analysis Complete. Please type: \n(1) for IMG_AP \n(2) for IMG_GAP \n(3) for IMG_bootMAP \n(5) to quit."
+        "MetaGaAP")
+            echo "You have selected MetaGaAP. Note: This is currently build 14 and may contain bugs."
+		bash IMG_pipelines/MetaGaAP/MetaGaAP_Back-ends/Set_wrk_dir.sh
+		echo -e "MetaGaAP Analysis Complete. Please type: \n(1) for IMG_AP \n(2) for MetaGaAP \n(4) to quit."
             ;;
 	"Install Most Packages")
             echo "You have selected to install most of the required packages. This requires you to input your superuser password. You will need to download GATK seperately. Biostars175929, kentUtils and bbmap will be found in the IMG_pipelines folder."
@@ -70,7 +65,7 @@ do
 		cd ../htslib*
 		make
 		sudo make prefix=/usr/ install
-		echo -e "Installation Complete. Please type: \n(1) for IMG_AP \n(2) for IMG_GAP \n(3) for IMG_GAP \n(4)for IMG_GAPv2 \n(6) to quit."
+		echo -e "Installation Complete. Please type: \n(1) for IMG_AP \n(2) for MetaGaAP \n(4) to quit."
             ;;		
         "Quit")
             break
