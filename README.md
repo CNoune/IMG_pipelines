@@ -15,15 +15,18 @@ Noune, C.; Hauxwell, C. Comparative Analysis of HaSNPV-AC53 and Derived Strains.
 Below you will find the individual citations for each pipeline
 
 # Installation
-You need to have Java 1.8 as your default otherwise the required packages will not compile. IMG_Start will automatically download and install 1.8 but it will not make it the default java unless you have no other versions installed.
+You need to have Java 1.8 as your default otherwise the required packages will not compile. Start.sh will automatically download and install 1.8 but it will not make it the default java unless you have no other versions installed.
 
-Run bash IMG_pipelines/IMG_Start.sh
+You will have to provide a password when prompted to install the dependencies. Note: Dependencies are for all pipelines to run.
 
-Select option 4 to install most packages
+Run as follows:
+bash IMG_pipelines/Start.sh
+
+Select option 3 to install most packages
 
 Select the pipeline you wish to use
 
-You must always run IMG_Start.sh first to launch each pipeline otherwise the backends and working directories wont be set. 
+You must always run Start.sh first to launch each pipeline otherwise the backends and working directories wont be set. 
 
 # Citing IMG_AP
 
@@ -32,7 +35,7 @@ Noune, C. and C. Hauxwell (2016). "Complete Genome Sequences of Seven Helicoverp
 Noune, C.; Hauxwell, C. Comparative Analysis of HaSNPV-AC53 and Derived Strains. Viruses 2016, 8, 280.
 
 
-# Citing IMG_GAP
+# Citing MetaGaAP
 
 
 # Software Citations
