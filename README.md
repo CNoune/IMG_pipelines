@@ -1,7 +1,7 @@
 # IMG_Pipelines
 Bash and R pipelines from the Invertebrates & Microbiology Group at the Queensland University of Technology to help make data analysis easy.
 # Intro
-These pipelines were built to orginally analyse baculoviruses and are essentially wrappers for existing software but pre-optomised to help get rid of any guess work. The pipelines require various software to be pre-installed before running so make sure you read each individual readme. If you use the pipelines please don't forget to cite them and cite the software it uses.
+These pipelines were built to orginally analyse baculoviruses and are essentially wrappers for existing software but pre-optomised to help get rid of any guess work. The pipelines require various software to be pre-installed before running so make sure you read each individual readme (documentations folder). If you use the pipelines please don't forget to cite them and cite the software it uses.
 Thanks!
 # Author
 Christopher Noune
@@ -10,7 +10,7 @@ https://www.researchgate.net/profile/Christopher_Noune
 
 # Citing IMG_Pipelines
 
-Noune, C.; Hauxwell, C. Comparative Analysis of HaSNPV-AC53 and Derived Strains. Viruses 2016, 8, 280.
+Noune, C. The Invertebrates & Microbiology Group Pipelines, GitHub, Queensland University of Technology: https://github.com/CNoune/IMG_pipelines, 2016.
 
 Below you will find the individual citations for each pipeline
 
