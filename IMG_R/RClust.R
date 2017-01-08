@@ -1,4 +1,4 @@
-# IMG_RClust- version 2.0
+# RClust- version 2.0
 # Copyright (c) 2016 Christopher Noune
 
 #Install and check Packages Function found on (http://stackoverflow.com/questions/9341635/check-for-installed-packages-before-running-install-packages)
