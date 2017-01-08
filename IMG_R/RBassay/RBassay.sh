@@ -1,4 +1,4 @@
-# IMG_RBassay- version 1.0
+# RBassay- version 1.0
 # Copyright (c) 2016 Christopher Noune
 
 #Install Packages - Function found on (http://stackoverflow.com/questions/9341635/check-for-installed-packages-before-running-install-packages)
