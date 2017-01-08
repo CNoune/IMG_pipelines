@@ -1,4 +1,4 @@
-IMG_RBassay v1 instructions
+RBassay v1 instructions
 
 1.Input your data into the Bioassay scoresheet - Raw data scoresheet
 	Note: If your data is ST50 related change the columns to reflect time not dose
