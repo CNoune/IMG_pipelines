@@ -15,7 +15,11 @@ https://www.researchgate.net/profile/Christopher_Noune
 Noune, C. The Invertebrates & Microbiology Group Pipelines, GitHub, Queensland University of Technology: https://github.com/CNoune/IMG_pipelines, 2016.
 
 Below you will find the individual citations for each pipeline
+# System Requirements
 
+At least 8GB of RAM. 
+At least a 4 core CPU. 
+At least 20GB of storage for each analysis per dataset.
 # Installation
 You need to have Java 1.8 as your default otherwise the required packages will not compile. Start.sh will automatically download and install 1.8 but it will not make it the default java unless you have no other versions installed.
 
