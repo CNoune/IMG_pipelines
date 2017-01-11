@@ -30,7 +30,7 @@ Select the pipeline you wish to use
 
 You must always run Start.sh first to launch each pipeline otherwise the backends and working directories wont be set. 
 
-# Citing IMG_AP
+# Citing the Invertebrates & Microbiology Group Assembly Pipeline
 
 Noune, C. and C. Hauxwell (2016). "Complete Genome Sequences of Seven Helicoverpa armigera SNPV-AC53-Derived Strains." Genome announcements 4(3).
 
