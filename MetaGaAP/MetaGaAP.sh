@@ -1,6 +1,6 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
-# MetaGaAP - version 1.0 - build 14
+# MetaGaAP - version 1.0 - build 15
 # Copyright (c) 2016 Christopher Noune
 FILETIME=`date +%T`
 FILEDATE=`date +%F`
@@ -298,7 +298,7 @@ SNP_discovery:
 						echo "Please Specify the gVCF Output name"
 						read gVCF_name
 						echo "Begining SNP Discovery"
-						java -jar $GATK -T HaplotypeCaller -R $Ref -I $BAM_corr --genotyping_mode DISCOVERY --emitRefConfidence GVCF --maxReadsInRegionPerSample $max_reads --max_alternate_alleles $Max_Alleles -nct $t -o $gVCF_out/$gVCF_name-initial.g.vcf
+						java -jar $GATK -T HaplotypeCaller -R $Ref -I $BAM_corr --genotyping_mode DISCOVERY --emitRefConfidence GVCF --maxReadsInRegionPerSample $max_reads --max_alternate_alleles $Max_Alleles -nct $t -dt NONE -o $gVCF_out/$gVCF_name-initial.g.vcf
 						echo "SNP Discovery is finished"
 					done
 					jumpto genotyping
@@ -323,7 +323,7 @@ SNP_discovery:
 						echo "Please Specify the gVCF Output name"
 						read gVCF_name
 						echo "Begining SNP Discovery"
-						java -jar $GATK -T HaplotypeCaller -R $Ref -I $BAM_corr --genotyping_mode DISCOVERY --emitRefConfidence GVCF --maxReadsInRegionPerSample $max_reads --max_alternate_alleles $Max_Alleles -nct $t -o $gVCF_out/$gVCF_name-initial.g.vcf
+						java -jar $GATK -T HaplotypeCaller -R $Ref -I $BAM_corr --genotyping_mode DISCOVERY --emitRefConfidence GVCF --maxReadsInRegionPerSample $max_reads --max_alternate_alleles $Max_Alleles -nct $t -dt NONE -o $gVCF_out/$gVCF_name-initial.g.vcf
 						echo "SNP Discovery is finished"
 					done
 					jumpto genotyping
@@ -360,7 +360,7 @@ SNP_discovery:
 						echo "Please Specify BAM Output name"
 						read bam_out_name
 						echo "Begining SNP Discovery"
-						java -jar $GATK -T HaplotypeCaller -R $Ref -I $BAM_corr --genotyping_mode DISCOVERY --emitRefConfidence GVCF --maxReadsInRegionPerSample $max_reads -bamout $bam_out/$bam_out_name  -o $gVCF_out/$gVCF_name-initial.g.vcf
+						java -jar $GATK -T HaplotypeCaller -R $Ref -I $BAM_corr --genotyping_mode DISCOVERY --emitRefConfidence GVCF --maxReadsInRegionPerSample $max_reads -bamout $bam_out/$bam_out_name  -dt NONE -o $gVCF_out/$gVCF_name-initial.g.vcf
 						echo "SNP Discovery is finished"
 					done
 					jumpto genotyping			
@@ -390,7 +390,7 @@ SNP_discovery:
 						echo "Please Specify BAM Output name"
 						read bam_out_name
 						echo "Begining SNP Discovery"
-						java -jar $GATK -T HaplotypeCaller -R $Ref -I $BAM_corr --genotyping_mode DISCOVERY --emitRefConfidence GVCF --maxReadsInRegionPerSample $max_reads --max_alternate_alleles $Max_Alleles -bamout $bam_out/$bam_out_name  -o $gVCF_out/$gVCF_name-initial.g.vcf
+						java -jar $GATK -T HaplotypeCaller -R $Ref -I $BAM_corr --genotyping_mode DISCOVERY --emitRefConfidence GVCF --maxReadsInRegionPerSample $max_reads --max_alternate_alleles $Max_Alleles -dt NONE -bamout $bam_out/$bam_out_name  -o $gVCF_out/$gVCF_name-initial.g.vcf
 						echo "SNP Discovery is finished"
 					done				
 					jumpto genotyping
