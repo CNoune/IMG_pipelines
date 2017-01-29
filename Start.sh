@@ -41,8 +41,7 @@ do
 		mv bbmap/ IMG_pipelines/
 		rm latest_bbmap.tar.gz
 		cd libxslt
-		sh autogen.sh
-		./configure
+		./autogen.sh --prefix=/usr
 		make
 		sudo make install
 		cd ../htsjdk
