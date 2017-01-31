@@ -5,7 +5,11 @@ Installation:
 Simply run in RStudio (or any IDE/terminal prompt) as you normally would.
 
 Scripts:
-RClust - Kmeans clustering using the APE, MCLUST and kmeans packages
+RClust_Dist - K-means clustering using the APE, MCLUST and kmeans packages - use for nucleotide alignment clustering
+RClust_SNPs - K-means clustering using MCLUST and kmeans packahes - use for SNP abundance clustering. 
+  1. Data should be formatted as tab-delimeted table.
+  2. Data should be produced from the GATK VariantsToTable tool.
+  3. Abundance should be precalculated prior to running this script.
 RBassay - Median lethal dose and median survival time statistical analysis using MASS
 
 Citations:
