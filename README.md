@@ -47,6 +47,7 @@ Noune, C.; Hauxwell, C. Comparative Analysis of HaSNPV-AC53 and Derived Strains.
 
 # Citing MetaGaAP (previously known as IMG-GAP).
 
+(In Press) Noune, C.; Hauxwell, C. MetaGaAP: A Novel Pipeline to Estimate Community Composition and Abundance from Non-Model Sequence Data. Biology 2017
 
 # Software Citations
 The pipelines uses the following software citations:
