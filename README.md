@@ -16,6 +16,16 @@ Noune, C. The Invertebrates & Microbiology Group Pipelines, GitHub, Queensland U
 
 Below you will find the individual citations for each pipeline
 
+# Citing MetaGaAP (previously known as IMG-GAP).
+
+(In Press) Noune, C.; Hauxwell, C. MetaGaAP: A Novel Pipeline to Estimate Community Composition and Abundance from Non-Model Sequence Data. Biology 2017
+
+# Citing the Invertebrates & Microbiology Group Assembly Pipeline
+
+Noune, C. and C. Hauxwell (2016). "Complete Genome Sequences of Seven Helicoverpa armigera SNPV-AC53-Derived Strains." Genome announcements 4(3).
+
+Noune, C.; Hauxwell, C. Comparative Analysis of HaSNPV-AC53 and Derived Strains. Viruses 2016, 8, 280.
+
 # System Requirements - MetaGaAP and Assembly Pipeline
 
 At least 8GB of RAM. 
@@ -38,19 +48,8 @@ Select the pipeline you wish to use
 
 You must always run Start.sh first to launch each pipeline otherwise the backends and working directories wont be set. 
 
-# Citing the Invertebrates & Microbiology Group Assembly Pipeline
-
-Noune, C. and C. Hauxwell (2016). "Complete Genome Sequences of Seven Helicoverpa armigera SNPV-AC53-Derived Strains." Genome announcements 4(3).
-
-Noune, C.; Hauxwell, C. Comparative Analysis of HaSNPV-AC53 and Derived Strains. Viruses 2016, 8, 280.
-
-
-# Citing MetaGaAP (previously known as IMG-GAP).
-
-(In Press) Noune, C.; Hauxwell, C. MetaGaAP: A Novel Pipeline to Estimate Community Composition and Abundance from Non-Model Sequence Data. Biology 2017
-
 # Software Citations
-The pipelines uses the following software citations:
+The pipelines uses the following software:
   
   Gordon A, Hannon G. 2010. Fastx-toolkit. FASTQ/A short-reads preprocessing tools (unpublished) http://hannonlab cshl edu/fastx_toolkit.
   
