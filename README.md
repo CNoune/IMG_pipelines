@@ -18,7 +18,7 @@ Below you will find the individual citations for each pipeline
 
 # Citing MetaGaAP (previously known as IMG-GAP).
 
-(In Press) Noune, C.; Hauxwell, C. MetaGaAP: A Novel Pipeline to Estimate Community Composition and Abundance from Non-Model Sequence Data. Biology 2017
+Noune, C.; Hauxwell, C. MetaGaAP: A Novel Pipeline to Estimate Community Composition and Abundance from Non-Model Sequence Data. Biology 2017, 6, 14
 
 # Citing the Invertebrates & Microbiology Group Assembly Pipeline
 
