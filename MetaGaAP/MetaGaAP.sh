@@ -1,6 +1,6 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
-# MetaGaAP - version 1.0 - build 15
+# MetaGaAP - version 1.0 - build 16
 # Copyright (c) 2016 Christopher Noune
 FILETIME=`date +%T`
 FILEDATE=`date +%F`
@@ -85,7 +85,7 @@ trim:
 	fi
 	done
 init_index:
-	echo "Do you wish to index a reference sequence for initial consensus sequence generation (y/n)?"
+	echo "Do you wish to index a reference sequence (y/n)?"
 	read next	
 	while [ "$next" = y ]
 	do
@@ -101,104 +101,12 @@ init_index:
 		samtools faidx $Init_Ref
 		picard-tools CreateSequenceDictionary R=$Init_Ref O=$Dict.dict
 		echo "Indexing has finished"
-		jumpto cns_map
+		jumpto init_map
 	if ["$next" = n]
-	then jumpto cns_map
+	then jumpto init_map
 	fi
 	done 
-cns_map:
-	echo "Do you wish to produce the initial consensus sequence (y/n)? This will reduce the amount of identified polymorphisms per dataset in order to be processed efficiently. However, it will bias towards the dominant Taxa/OTU in the dataset. If you are processing multiple datasets, it is recomended to produce a consensus sequence per dataset."
-	read next
-	while [ "$next" = y ]
-	do
-		echo "Press [ENTER] to specify the Reference file."
-		read enter
-		Init_Ref="`zenity --file-selection`"
-		for ((i=1; i<=$x; i++))
-		do
-			echo "Conensus Generation for sample $i"			
-			echo "Press [ENTER] to specify the trimmed FASTQ file."
-			read enter
-			FastQ="`zenity --file-selection`"
-			echo "Press [ENTER] to specify SAM output directory"
-			read enter
-			SAM_output="`zenity --file-selection --directory`"
-			echo "Please specify SAM output name"
-			read SAM_name
-			SAM="$SAM_output/$SAM_name.sam"
-			echo "Mapping has begun"
-			bwa mem $Init_Ref $FastQ -t $t > $SAM
-			echo "Mapping is complete. Proceeding to BAM conversion."
-			echo "Press [ENTER] to begin BAM conversion"
-			read enter
-			echo "Press [ENTER] to specify BAM output directory"
-			read enter
-			BAM_out="`zenity --file-selection --directory`"
-			BAM_sort="$BAM_out/$(basename "$SAM" .sam)"
-			echo "BAM sorting and conversion has begun."
-			samtools view -b $SAM  | samtools sort -o $BAM_sort-sorted.bam
-			BAM_cns=$BAM_sort-sorted.bam
-			echo "BAM sorting and conversion has ended. Proceeding to Initial Consensus Generation."
-			echo "Press [ENTER] to begin initial consensus generation"
-			read enter
-			echo "Press [ENTER] to specify output directory for VCF file"
-			read enter
-			VCF_out="`zenity --file-selection --directory`"
-			echo "Please specify VCF output name"
-			read VCF_name
-			VCF=$VCF_out/$VCF_name.vcf
-			echo "Press [ENTER] to specify output directory for bed file"
-			read enter
-			BED_out="`zenity --file-selection --directory`"
-			echo "Please specify BED output name"
-			read BED_name
-			BED="$BED_out/$BED_name.bed"
-			echo "Press [ENTER] to select an output directory for Initial Consensus Sequence"
-			read enter
-			CNS_out="`zenity --file-selection --directory`"
-			echo "Please specify initial consensus sequence name"
-			read CNS_name
-			echo "Please specify mergeBed overlap value"
-			read d
-			echo "Initial consensus generation has begun"
-			Init_CNS=$CNS_out/$CNS_name.fasta
-			genomeCoverageBed -bg -split -ibam $BAM_cns | mergeBed -d $d | samtools mpileup -uf $Init_Ref $BAM_cns -l stdin | bcftools view -cg -> $VCF
-			genomeCoverageBed -bg -split -ibam $BAM_cns | mergeBed -d $d > $BED
-			java -jar $GATK -T FastaAlternateReferenceMaker -R $Init_Ref -o $Init_CNS  --variant $VCF -L $BED
-			echo "Initial consensus generation is complete"	
-		done
-		jumpto cns_index
-	if ["$next" = n]
-	then jumpto cns_index
-	fi
-	done
-cns_index:
-	echo "Do you wish to index the initial consensus sequence (y/n)?"
-	read next
-	while [ "$next" = y ]
-	do
-		for ((i=1; i<=$x; i++))
-		do
-			echo " Indexing Consensus Sequence $i"
-			echo "Press [ENTER] to Select a Reference to Index"
-			read enter
-			Init_Ref="`zenity --file-selection`"
-			echo "Press [ENTER] to Select Sequence Dictionary Output Folder"
-			read enter
-			Dict_out="`zenity --file-selection --directory`"
-			Dict="$Dict_out/$(basename "$Init_Ref" .fasta)"
-			echo "Indexing has begun"
-			bwa index $Init_Ref
-			samtools faidx $Init_Ref
-			picard-tools CreateSequenceDictionary R=$Init_Ref O=$Dict.dict
-			echo "Indexing has finished"
-		done
-		jumpto mid_map
-	if ["$next" = n]
-	then jumpto mid_map
-	fi
-	done
-mid_map:
+init_map:
 	echo "Do you wish to complete the initial mapping (y/n)?"
 	read next
 	while [ "$next" = y ]
