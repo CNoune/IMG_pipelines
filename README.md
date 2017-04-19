@@ -1,7 +1,10 @@
 # Invertebrates & Microbiology Group
 Bash and R pipelines from the Invertebrates & Microbiology Group at the Queensland University of Technology to help make data analysis easy.
 
-Please note: IMG-GAP has been renamed to MetaGaAP to remove confusion with JGI's IMG system.
+# In Development
+
+MetaGaAP 2: Currently in closed-alpha, End-of-year release. Complete re-write in Python 3 with emphasis on accuracy and computational efficiency. 
+
 # Intro
 These pipelines were built to orginally analyse baculoviruses and are essentially wrappers for existing software but pre-optomised to help get rid of any guess work. The pipelines require various software to be pre-installed before running so make sure you read each individual readme (documentations folder). If you use the pipelines please don't forget to cite them and cite the software it uses.
 Thanks!
@@ -16,7 +19,7 @@ Noune, C. The Invertebrates & Microbiology Group Pipelines, GitHub, Queensland U
 
 Below you will find the individual citations for each pipeline
 
-# Citing MetaGaAP (previously known as IMG-GAP).
+# Citing MetaGaAP
 
 Noune, C.; Hauxwell, C. MetaGaAP: A Novel Pipeline to Estimate Community Composition and Abundance from Non-Model Sequence Data. Biology 2017, 6, 14
 
