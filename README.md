@@ -40,12 +40,11 @@ You need python3 to run these scripts.
 
 In addition:
 
-Ubuntu
+*Ubuntu
 
-sudo apt-get install python3-tk
-sudo apt-get install python-biopython
+sudo apt-get install python3-tk python-biopython
 
-Windows - tested using Spyder and Anaconda
+*Windows - tested using Spyder and Anaconda
 
 You can either install using the Anaconda Environment or:
 
