@@ -6,8 +6,6 @@ Christopher Noune: https://www.researchgate.net/profile/Christopher_Noune
 
 # In Development
 
-(Delayed: ETA Unknown) - MetaGaAP 2: Currently in closed-alpha, End-of-year release. Complete re-write in Python 3 with emphasis on accuracy and computational efficiency.
-
 MetaGaAP-Py: Highly optimised re-write of MetaGaAP in Python3. ETA - 2 months.
 
 I am slowly converting everything from Bash to Python3 and attempting to introduce cross-platform compatibility.
