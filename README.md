@@ -38,7 +38,7 @@ You need python3 to run these scripts.
 
 *Ubuntu: Example to run - python3 FastqConv.py
 
-sudo apt-get install python3-tk python-biopython
+sudo apt-get install python3-tk python3-biopython
 
 *Windows: Example to run - python FastqConv.py
 
