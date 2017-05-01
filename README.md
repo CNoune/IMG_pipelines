@@ -38,13 +38,13 @@ You must always run Start.sh first to launch each pipeline otherwise the backend
 
 You need python3 to run these scripts.
 
-In addition:
-
-*Ubuntu
+*Ubuntu: Example to run - python3 FastqConv.py
 
 sudo apt-get install python3-tk python-biopython
 
-*Windows - tested using Spyder and Anaconda
+*Windows: Example to run - python FastqConv.py
+
+Note: Tested using Spyder and Anaconda
 
 You can either install using the Anaconda Environment or:
 
