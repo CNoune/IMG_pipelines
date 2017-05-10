@@ -42,8 +42,7 @@ root = tk.Tk()
 root.withdraw()
 IMG = filedialog.askdirectory()
 Biostars=IMG+"/jvarkit/dist/biostar175929.jar"
-subset=IMG+"/Additional_Scripts/Subset_Stats.R"
-seqlist=IMG+"/Additional_Scripts/Seq_List.R"
+
 param=str(input("Skip parameter input, reference and fastq selection? (y/n): "))
 while param not in ['y', 'n']:
     print("This is not a valid input, please try again.")
