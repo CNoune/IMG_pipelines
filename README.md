@@ -6,9 +6,9 @@ Christopher Noune: https://www.researchgate.net/profile/Christopher_Noune
 
 # In Development
 
-MetaGaAP-Py: Highly optimised re-write of MetaGaAP in Python3. ETA - 2 months.
+MetaGaAP-Py: Build 1 is available. Documentation to follow.
 
-I am slowly converting everything from Bash to Python3 and attempting to introduce cross-platform compatibility.
+I am slowly converting everything from Bash to Python 3 and attempting to introduce cross-platform compatibility.
 
 # System Requirements - MetaGaAP and Assembly Pipeline
 
@@ -17,6 +17,22 @@ At least 8GB of RAM.
 At least a 4 core CPU. 
 
 At least 20GB of storage for each analysis per dataset.
+
+# MetaGaAP-Py - Please cite the original MetaGaAP publication if you use the python or bash implementations.
+
+Build 1 is available for download. I would advise against using it at the moment as it is an alpha and I am still working on bugs and feature implementations. I recommend continuing to use the Bash implementation if you are working with critical data and can't risk major bugs.
+
+However, if you wish to run MetaGaAP-Py please follow the instructions below as it is different than the other pipelines:
+
+1. You need to have samtools (1.3 or above), bwa, picard-tools (2.9 or above) in your path. GATK (3.6 or above) and the Biostar175929 tool don't need to be in your path but you will be prompted to select GATK and prompted to select the IMG_pipelines directory as you should have the Biostar175929 tool in the following location - IMG_pipelines/jvarkit/dist/biostar175929.jar
+
+2. This has been coded in Python 3, therefore you need Python 3 otherwise some of the code will not run.
+
+3. To execute complete the following (assuming you are in Ubuntu) - python3 IMG_pipelines/MetaGaAP-Py.py
+
+4. You need to have the Biopython, Pandas and Tkinter python 3 packages installed to run MetaGaAP-Py
+
+5. I am working on documentation that will be released soon.
 
 # Installation - MetaGaAP and Assembly Pipeline
 You need to have Java 1.8 as your default otherwise the required packages will not compile. Start.sh will automatically download and install 1.8 but it will not make it the default java unless you have no other versions installed.
