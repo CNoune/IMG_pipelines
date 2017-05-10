@@ -51,3 +51,4 @@ if (Ba == "ST50"){
 Result <- dose.p(Ba_Stats.model, p = 0.5)
 #Transforms into a normal number. Note: The Dose column in the result is the final result regardless of ST50 or LC50.
 transformed_result <- exp(Result)
+transformed_result
