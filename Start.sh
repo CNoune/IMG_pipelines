@@ -28,7 +28,6 @@ do
 		wget 'https://sourceforge.net/projects/bbmap/files/latest/latest_bbmap.tar.gz'
 		git clone git://git.gnome.org/libxslt
 		git clone "https://github.com/samtools/htsjdk"
-		git clone "https://github.com/lindenb/jvarkit.git"
 		git clone git://github.com/ENCODE-DCC/kentUtils.git
 		tar xf latest_bbmap.tar.gz
 		tar jxf samtools-1.3.1.tar.bz2
@@ -48,8 +47,6 @@ do
 		sudo make install
 		cd ../htsjdk
 		./gradlew
-		cd ../jvarkit
-		make biostar175929 standalone=yes
 		cd ../kentUtils
 		make
 		cd
