@@ -41,7 +41,7 @@ input("Press Enter to specify where the IMG Pipelines Directory is: ")
 root = tk.Tk()
 root.withdraw()
 IMG = filedialog.askdirectory()
-Biostars=IMG+"/jvarkit/dist/biostar175929.jar"
+Biostars=IMG+"/Additional_Scripts/biostar175929.jar"
 
 param=str(input("Skip parameter input, reference and fastq selection? (y/n): "))
 while param not in ['y', 'n']:
