@@ -19,7 +19,9 @@ do
             ;;
 	"Install Most Packages")
             echo "You have selected to install most of the required packages. This requires you to input your superuser password. You will need to download GATK seperately. Biostars175929, kentUtils and bbmap will be found in the IMG_pipelines folder."
-		sudo apt-get install bwa openjdk-8-jdk openjdk-8-jre fastx-toolkit tophat libtool autoconf fastqc picard-tools git gradle libxml2 libxml2-dev libssl-dev openssl mysql-client-5.7 mysql-client-core-5.7 libpng-dev zlib1g-dev libmysqlclient-dev r-base
+		sudo add-apt-repository ppa:webupd8team/java
+		sudo apt-get update
+		sudo apt-get install oracle-java8-installer bwa fastx-toolkit tophat libtool autoconf fastqc picard-tools git gradle libxml2 libxml2-dev libssl-dev openssl mysql-client-5.7 mysql-client-core-5.7 libpng-dev zlib1g-dev libmysqlclient-dev r-base
 		wget 'https://github.com/samtools/samtools/releases/download/1.3.1/samtools-1.3.1.tar.bz2'
 		wget 'https://github.com/samtools/bcftools/releases/download/1.3.1/bcftools-1.3.1.tar.bz2'
 		wget 'https://github.com/samtools/htslib/releases/download/1.3.2/htslib-1.3.2.tar.bz2'
