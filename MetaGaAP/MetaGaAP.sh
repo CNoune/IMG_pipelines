@@ -33,7 +33,7 @@ start:
 	GATK=`zenity --file-selection`
 	Renamer="$IMG_dir/bbmap/rename.sh"
 	Dedupe="$IMG_dir/bbmap/dedupe.sh"
-	biostars="$IMG_dir/jvarkit/dist/biostar175929.jar"
+	biostars="$IMG_dir/Additional_Scripts/biostar175929.jar"
 	Extract_Fa="$IMG_dir/kentUtils/bin/linux.x86_64/faSomeRecords"
 	echo "Please specify how many samples you wish to process"
 	read x
