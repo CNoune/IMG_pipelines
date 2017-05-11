@@ -22,9 +22,11 @@ At least 20GB of storage for each analysis per dataset.
 
 Build 1 is available for download. I would advise against using it at the moment as it is an alpha and I am still working on bugs and feature implementations. I recommend continuing to use the Bash implementation if you are working with critical data and can't risk major bugs.
 
+Note: Pre-compiled Biostar175929 tool is now included within the additional scripts folder with permissions from the author Pierre Lindenbaum.
+
 However, if you wish to run MetaGaAP-Py please follow the instructions below as it is different than the other pipelines:
 
-1. You need to have samtools (1.3 or above), bwa, picard-tools (2.9 or above) in your path. GATK (3.6 or above) and the Biostar175929 tool don't need to be in your path but you will be prompted to select GATK and prompted to select the IMG_pipelines directory as you should have the Biostar175929 tool in the following location - IMG_pipelines/jvarkit/dist/biostar175929.jar
+1. You need to have samtools (1.3 or above), bwa, picard-tools (2.9 or above) in your path. GATK (3.6 or above) and the Biostar175929 tool don't need to be in your path but you will be prompted to select GATK and prompted to select the IMG_pipelines directory so it can use the biostar175929 tool located in the additional scripts folder.
 
 2. This has been coded in Python 3, therefore you need Python 3 otherwise some of the code will not run.
 
