@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """
-MetaGaAP-Py - build 1
-Start Date - 28 April 2017
-End Date - 10 May 2017
+MetaGaAP-Py - build 2
+Start Date - 12 May 2017
+End Date - 14 May 2017
 By Christopher Noune
 """
 
@@ -56,8 +56,8 @@ if param == 'n':
     input("Press Enter to specify your fastq file: ")
     root = tk.Tk()
     root.withdraw()
-    F_fq = filedialog.askopenfilename()
-    fq_name, fq_ext = os.path.splitext(os.path.basename(F_fq))
+    I_fq = filedialog.askopenfilename()
+    fq_name, fq_ext = os.path.splitext(os.path.basename(I_fq))
     qc = str(input("Please specify minimum quality score to keep: "))
     l = str(input("Please specify the last base to keep: "))
     f = str(input("Please specify the first base to keep: "))
@@ -86,12 +86,12 @@ if clean == 'n':
     QC_f=qc_dir+fq_name+"_QC"+fq_ext
     Art_f=art_dir+fq_name+"_Art"+fq_ext
     F_fq=F_dir+fq_name+"_Final"+fq_ext
-    qc_cmd = "fastq_quality_trimmer -t "+qc+" -l "+l+" -i "+F_fq+" -o "+QC_f
+    qc_cmd = "fastq_quality_trimmer -t "+qc+" -l "+l+" -i "+I_fq+" -o "+QC_f
     art_cmd = "fastx_artifacts_filter -i "+QC_f+" -o "+Art_f
-    F_cmd= "fastx_trimmer -f "+f+" -l"+l+" -i"+Art_f+" -o"+F_fq
-    subprocess.Popen([qc_cmd], shell=True)
-    subprocess.Popen([art_cmd], shell=True)
-    subprocess.Popen([F_cmd], shell=True)
+    F_cmd= "fastx_trimmer -f "+f+" -l "+l+" -i "+Art_f+" -o "+F_fq
+    subprocess.Popen([qc_cmd], shell=True).wait()
+    subprocess.Popen([art_cmd], shell=True).wait()
+    subprocess.Popen([F_cmd], shell=True).wait()
     print("Finished Cleaning.")
 elif clean == 'y':
     print("Skipped cleaning.")
@@ -100,26 +100,26 @@ meta=str(input("Do you wish to begin the MetaGaAP process (y/n): "))
 while meta not in ['y', 'n']:
     print("This is not a valid input, please try again.")
     meta=str(input("Skip database production? (y/n): "))
-if meta == 'n':
+if meta == 'y':
     print("Starting MetaGaAP")
     bi="bwa index "+ref
-    pidict="PicardCommandLine CreateSequenceDictionary R="+ref+" O="+ref_name+".dict"
+    pidict="picard-tools CreateSequenceDictionary R="+ref+" O="+ref_name+".dict"
     sam_ind="samtools faidx "+ref
-    subprocess.Popen([bi], shell=True)
-    subprocess.Popen([pidict], shell=True)
-    subprocess.Popen([sam_ind], shell=True)
+    subprocess.Popen([bi], shell=True).wait()
+    subprocess.Popen([pidict], shell=True).wait()
+    subprocess.Popen([sam_ind], shell=True).wait()
     init_dir=path+"/Initial_Mapping/"
     if not os.path.isdir(init_dir):
         init_out=os.makedirs(init_dir)
     init_sam=init_dir+ref_name+"_initial_map.sam"
     init_bam=init_dir+ref_name+"_inital_map_sorted.bam"
     corr_bam=init_dir+ref_name+"_final_initial_map.bam"
-    bwa_init="bwa mem "+ref+" "+F_fq+" -t"+t+" > "+init_sam
+    bwa_init="bwa mem "+ref+" "+F_fq+" -t "+t+" > "+init_sam
     conv="samtools view -b "+init_sam+" | samtools sort -o "+init_bam
-    corr_cmd="PicardCommandLine AddOrReplaceReadGroups I= "+init_bam+" O= "+corr_bam+" RGLB= "+RGLB+" RGPU= "+RGPU+" RGPL= "+RGPL+" RGSM= "+RGSM+" CREATE_INDEX=true"
-    subprocess.Popen([bwa_init], shell=True)
-    subprocess.Popen([conv], shell=True)
-    subprocess.Popen([corr_cmd], shell=True)
+    corr_cmd="picard-tools AddOrReplaceReadGroups I= "+init_bam+" O= "+corr_bam+" RGLB= "+RGLB+" RGPU= "+RGPU+" RGPL= "+RGPL+" RGSM= "+RGSM+" CREATE_INDEX=true"
+    subprocess.Popen([bwa_init], shell=True).wait()
+    subprocess.Popen([conv], shell=True).wait()
+    subprocess.Popen([corr_cmd], shell=True).wait()
     count="awk 'NR%4 == 2 {lengths[length($0)]++} END {for (l in lengths) {print l, lengths[l]}}' "+F_fq
     count=subprocess.check_output([count], universal_newlines=True, shell=True)
     count=str.strip(count)
@@ -128,11 +128,11 @@ if meta == 'n':
     if not os.path.isdir(vcf_dir):
         vcf_out=os.makedirs(vcf_dir)
     gVCF=vcf_dir+fq_name+"_raw.g.vcf"
-    fVCF=vcf_dir+fq_name+"_final.g.vcf"
-    HapC="java -jar "+GATK+" -T HaplotypeCaller -R "+ref+" -I "+corr_bam+" --emitRefConfidence GVCF --maxReadsInRegionPerSample "+reads+"--max_alternate_alleles 100 -nct "+t+" -dt NONE -o "+gVCF
+    fVCF=vcf_dir+fq_name+"_final.vcf"
+    HapC="java -jar "+GATK+" -T HaplotypeCaller -R "+ref+" -I "+corr_bam+" --emitRefConfidence GVCF --maxReadsInRegionPerSample "+reads+" --max_alternate_alleles 100 -nct "+t+" -dt NONE -o "+gVCF
     Geno="java -jar "+GATK+" -T GenotypeGVCFs -R "+ref+" --variant "+gVCF+" -o "+fVCF
-    subprocess.Popen([HapC], shell=True)
-    subprocess.Popen([Geno], shell=True)
+    subprocess.Popen([HapC], shell=True).wait()
+    subprocess.Popen([Geno], shell=True).wait()
     db_dir=path+"/Database/"
     if not os.path.isdir(db_dir):
         com_out=os.makedirs(db_dir)
@@ -140,13 +140,15 @@ if meta == 'n':
     db_ft=db_dir+fq_name+"_temp_db.fasta"
     db_f=db_dir+fq_name+"_final_db.fasta"
     db_cmd="java -jar "+Biostars+" -R "+ref+" "+fVCF+" -x "+length+" -o "+db_it
-    subprocess.Popen([db_cmd], shell=True)
+    subprocess.Popen([db_cmd], shell=True).wait()
     linear="awk '/^>/ {printf("+'"\\n%s\\n"'+",$0);next; } { printf("+'"%s"'+",$0);}  END {printf("+'"\\n"'+");}' < "+db_it+" > "+db_ft
     rename="""awk '/^>/{print """+'">'+fq_name+'_" ++i; next}'+"{"+"print"+"}'"+" < "+db_ft+" > "+db_f
-    subprocess.Popen([linear], shell=True)
-    subprocess.Popen([rename], shell=True)
+    subprocess.Popen([linear], shell=True).wait()
+    subprocess.Popen([rename], shell=True).wait()
+    os.remove(db_it)
+    os.remove(db_ft)
     db_ind="bwa index "+db_f
-    subprocess.Popen([db_ind], shell=True)
+    subprocess.Popen([db_ind], shell=True).wait()
     f_dir=path+"/Final_Mapping/"
     if not os.path.isdir(f_dir):
         f_out=os.makedirs(f_dir)
@@ -161,11 +163,11 @@ if meta == 'n':
     sam_ind="samtools index "+f_bam
     sam_stat="samtools idxstats "+f_bam+" > "+stats
     sta_col='sed -i 1i"Sequences	Sequence_Length	Mapped_Reads	Unmapped_Reads" '+stats
-    subprocess.Popen([f_bwa], shell=True)
-    subprocess.Popen([f_conv], shell=True)
-    subprocess.Popen([sam_ind], shell=True)
-    subprocess.Popen([sam_stat], shell=True)
-    subprocess.Popen([sta_col], shell=True)
+    subprocess.Popen([f_bwa], shell=True).wait()
+    subprocess.Popen([f_conv], shell=True).wait()
+    subprocess.Popen([sam_ind], shell=True).wait()
+    subprocess.Popen([sam_stat], shell=True).wait()
+    subprocess.Popen([sta_col], shell=True).wait()
     temp=pd.read_csv(stats, sep="\t")
     temp=temp[temp.Mapped_Reads > 1]
     pd.DataFrame.to_csv(temp, header=True, index=False, path_or_buf=res_dir+fq_name+"_subset_stats.csv")
@@ -177,5 +179,5 @@ if meta == 'n':
     seqiter = SeqIO.parse(open(db), 'fasta')                                    
     SeqIO.write((seq for seq in seqiter if seq.id in seq_list), output, "fasta")
     print("Finished MetaGaAP.")
-elif meta == 'y':
+elif meta == 'n':
     print("Ending MetaGaAP. Goodbye!")
