@@ -18,7 +18,7 @@ import pandas as pd
 gc.enable()
 user= getpass.getuser()
 
-print('Welcome',user,"to MetaGaAP-Py (build 1). Lets begin.")
+print('Welcome',user,"to MetaGaAP-Py (build 2). Lets begin.")
 print("Note: This is a highly optimised implementation. Directories will be automatically created.")
 wrkdir=str(input("Do you wish to set a working directory (y/n)? "))
 while wrkdir not in ['y', 'n']:
@@ -178,6 +178,6 @@ if meta == 'y':
     seq_list = [line.strip() for line in open(res_dir+fq_name+"_seq_list.txt")]                               
     seqiter = SeqIO.parse(open(db), 'fasta')                                    
     SeqIO.write((seq for seq in seqiter if seq.id in seq_list), output, "fasta")
-    print("Finished MetaGaAP.")
+    print("MetaGaAP has finished. Goodbye!")
 elif meta == 'n':
     print("Ending MetaGaAP. Goodbye!")
