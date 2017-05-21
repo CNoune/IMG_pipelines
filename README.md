@@ -37,8 +37,11 @@ MetaGaAP-Py requires the follow the instructions below as it is different than t
 2. Use the following commands to install java and other dependencies:
 
 sudo add-apt-repository ppa:webupd8team/java
+
 sudo apt-get update
+
 sudo apt-get install oracle-java8-installer bwa fastx-toolkit picard-tools samtools python3-pandas
+
 pip3 install biopython
 
 This will install the latest versions if you are using Ubuntu 17.04.
