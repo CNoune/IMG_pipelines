@@ -16,9 +16,9 @@ At least a 4 core CPU.
 
 At least 20GB of storage for each analysis per dataset.
 
-# MetaGaAP-Py - Please cite the original MetaGaAP publication if you use the python or bash implementations.
+# MetaGaAP-Py - Please cite the original MetaGaAP publication.
 
-Build 3 is available for download and will be the last major revision to MetaGaAP. Please use MetaGaAP-Py from now on as this will be the supported version. The bash implementation has been shifted to legacy and will no longer be maintained.
+Build 3 is available for download and will be the last major revision to MetaGaAP. Please use MetaGaAP-Py from now on as this will be the supported version. The bash implementation has been shifted and renamed to MetaGaAP-Legacy and will no longer be maintained.
 
 Build 3 features include:
 
