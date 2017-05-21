@@ -1,5 +1,5 @@
 # Intro
-These pipelines were built to orginally analyse baculoviruses and are essentially wrappers for existing software but pre-optomised to help get rid of any guess work. The pipelines require various software to be pre-installed before running so make sure you read each individual readme (documentations folder). If you use the pipelines please don't forget to cite them and cite the software it uses.
+These pipelines were built to orginally analyse baculoviruses and are essentially wrappers for existing software but pre-optimised to help get rid of any guess work. The pipelines require various software to be pre-installed before running so make sure you read each individual readme (documentations folder). If you use the pipelines please don't forget to cite them and cite the software it uses.
 
 # Author
 Christopher Noune: https://www.researchgate.net/profile/Christopher_Noune
@@ -30,35 +30,31 @@ If any bugs or issues exist, please use the issue tracked so I can fix it.
 
 Note: Pre-compiled Biostar175929 tool is now included within the additional scripts folder with permissions from the author Pierre Lindenbaum.
 
-MetaGaAP-Py requires the follow the instructions below as it is different than the other pipelines:
+MetaGaAP-Py requires the follow the instructions below as it is different than the other pipelines: Note: This assumes you have pip3 and python 3.x installed. MetaGaAP-Py was coded in Python 3.6.1.
 
 1. You need to have samtools (1.3 or above), bwa, picard-tools (2.9 or above) in your path. GATK (3.6 or above) and the Biostar175929 tool don't need to be in your path but you will be prompted to select GATK and prompted to select the IMG_pipelines directory so it can use the biostar175929 tool located in the additional scripts folder.
 
-2. This has been coded in Python 3, therefore you need Python 3 otherwise some of the code will not run.
+2. Use the following commands to install java and other dependencies:
 
-3. To execute complete the following (assuming you are in Ubuntu) - python3 IMG_pipelines/MetaGaAP-Py.py
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer bwa fastx-toolkit picard-tools samtools python3-pandas
+pip3 install biopython
 
-4. You need to have the Biopython, Pandas and Tkinter python 3 packages installed to run MetaGaAP-Py
+This will install the latest versions if you are using Ubuntu 17.04.
 
-5. I am working on documentation that will be released soon.
+3. This has been coded in Python 3.6.1, therefore you need Python 3.x otherwise some of the code will not run.
 
-# Installation - MetaGaAP and Assembly Pipeline
-You need to have Java 1.8 as your default otherwise the required packages will not compile. Start.sh will automatically download and install 1.8 but it will not make it the default java unless you have no other versions installed.
+4. To run complete the following (assuming you are in Ubuntu) - python3 IMG_pipelines/MetaGaAP-Py.py
 
-You will have to provide a password when prompted to install the dependencies. Note: Dependencies are for all pipelines to run.
+5. You need to have the Biopython, Pandas and Tkinter python 3 packages installed to run MetaGaAP-Py
 
-Run as follows:
-bash IMG_pipelines/Start.sh
+6. I am working on documentation that will be released soon.
 
-Select option 3 to install most packages
-
-Select the pipeline you wish to use
-
-You must always run Start.sh first to launch each pipeline otherwise the backends and working directories wont be set.
 
 # Installation - Additional Scripts 
 
-You need python3 to run these scripts.
+You need Python 3.x to run these scripts.
 
 *Ubuntu: Example to run - python3 FastqConv.py
 
@@ -70,7 +66,7 @@ Note: Tested using Spyder and Anaconda
 
 You can either install using the Anaconda Environment or:
 
-pip install biopython
+pip3 install biopython (Ubuntu) or pip install biopython (Windows)
 
 tkinter should be installed already on windows.
 
