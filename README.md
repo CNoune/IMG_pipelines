@@ -6,8 +6,6 @@ Christopher Noune: https://www.researchgate.net/profile/Christopher_Noune
 
 # In Development
 
-MetaGaAP-Py: Build 1 is available. Documentation to follow.
-
 I am slowly converting everything from Bash to Python 3 and attempting to introduce cross-platform compatibility.
 
 # System Requirements - MetaGaAP and Assembly Pipeline
@@ -20,11 +18,19 @@ At least 20GB of storage for each analysis per dataset.
 
 # MetaGaAP-Py - Please cite the original MetaGaAP publication if you use the python or bash implementations.
 
-Build 1 is available for download. I would advise against using it at the moment as it is an alpha and I am still working on bugs and feature implementations. I recommend continuing to use the Bash implementation if you are working with critical data and can't risk major bugs.
+Build 3 is available for download and will be the last major revision to MetaGaAP. Please use MetaGaAP-Py from now on as this will be the supported version. The bash implementation has been shifted to legacy and will no longer be maintained.
+
+Build 3 features include:
+
+1. Most bugs have been dealt with. Some may still exist. 
+2. Multi-sample analysis
+3. Multi-threading for the removal of duplicate sequences - this has bugs but it will default to a single-core if needed.
+
+If any bugs or issues exist, please use the issue tracked so I can fix it.
 
 Note: Pre-compiled Biostar175929 tool is now included within the additional scripts folder with permissions from the author Pierre Lindenbaum.
 
-However, if you wish to run MetaGaAP-Py please follow the instructions below as it is different than the other pipelines:
+MetaGaAP-Py requires the follow the instructions below as it is different than the other pipelines:
 
 1. You need to have samtools (1.3 or above), bwa, picard-tools (2.9 or above) in your path. GATK (3.6 or above) and the Biostar175929 tool don't need to be in your path but you will be prompted to select GATK and prompted to select the IMG_pipelines directory so it can use the biostar175929 tool located in the additional scripts folder.
 
