@@ -8,6 +8,8 @@ Christopher Noune: https://www.researchgate.net/profile/Christopher_Noune
 
 I am slowly converting everything from Bash to Python 3 and attempting to introduce cross-platform compatibility.
 
+The Assembly Pipeline will be shifted to legacy soon and ported to Python but I do not have an ETA.
+
 # System Requirements - MetaGaAP and Assembly Pipeline
 
 At least 8GB of RAM. 
