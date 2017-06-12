@@ -183,6 +183,9 @@ if multi_ref == 'm':
                 pd.DataFrame.to_csv(temp, header=False, index=False, path_or_buf=res_dir+RGSM+"_seq_list.txt")
                 db=db_f
                 output=res_dir+RGSM+"_confirmed_sequences.fasta"
+                """Extract sequences from fasta database code created by
+                Dr. Jason Gallant and available from here: http://efish.zoology.msu.edu/testing-out-gist/
+                but I have slightly modified it"""
                 seq_list = [line.strip() for line in open(res_dir+RGSM+"_seq_list.txt")]                               
                 seqiter = SeqIO.parse(open(db), 'fasta')                                    
                 SeqIO.write((seq for seq in seqiter if seq.id in seq_list), output, "fasta")
@@ -316,6 +319,9 @@ elif multi_ref == 's':
                 pd.DataFrame.to_csv(temp, header=True, index=False, path_or_buf=res_dir+RGSM+"_subset_stats.csv")
                 del temp['Sequence_Length'], temp['Mapped_Reads'], temp['Unmapped_Reads']
                 pd.DataFrame.to_csv(temp, header=False, index=False, path_or_buf=res_dir+RGSM+"_seq_list.txt")
+                """Extract sequences from fasta database code created by
+                Dr. Jason Gallant and available from here: http://efish.zoology.msu.edu/testing-out-gist/
+                but I have slightly modified it"""
                 output=res_dir+RGSM+"_confirmed_sequences.fasta"
                 seq_list = [line.strip() for line in open(res_dir+RGSM+"_seq_list.txt")]                               
                 seqiter = SeqIO.parse(open(db_f), 'fasta')                                    
@@ -391,6 +397,9 @@ elif multi_ref == 's':
             del temp['Sequence_Length'], temp['Mapped_Reads'], temp['Unmapped_Reads']
             pd.DataFrame.to_csv(temp, header=False, index=False, path_or_buf=res_dir+RGSM+"_seq_list.txt")
             db=db_ul
+            """Extract sequences from fasta database code created by
+            Dr. Jason Gallant and available from here: http://efish.zoology.msu.edu/testing-out-gist/
+            but I have slightly modified it"""
             output=res_dir+RGSM+"_confirmed_sequences.fasta"
             seq_list = [line.strip() for line in open(res_dir+RGSM+"_seq_list.txt")]                               
             seqiter = SeqIO.parse(open(db), 'fasta')                                    
