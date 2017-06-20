@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-MetaGaAP-Py - build 3
+MetaGaAP-Py - build 3.1 (Ammended 21/06/2017)
 Start Date - 16 May 2017
 End Date -  21 May 2017
 By Christopher Noune
@@ -119,77 +119,77 @@ if multi_ref == 'm':
             init_dir=path+"/Initial_Mapping/"
             if not os.path.isdir(init_dir):
                 init_out=os.makedirs(init_dir)
-                init_sam=init_dir+ref_name+"_initial_map.sam"
-                init_bam=init_dir+ref_name+"_inital_map_sorted.bam"
-                corr_bam=init_dir+ref_name+"_final_initial_map.bam"
-                bwa_init="bwa mem "+ref+" "+F_fq+" -t "+t+" > "+init_sam
-                conv="samtools view -b "+init_sam+" | samtools sort -o "+init_bam
-                corr_cmd="picard-tools AddOrReplaceReadGroups I= "+init_bam+" O= "+corr_bam+" RGLB= "+RGLB+" RGPU= "+RGPU+" RGPL= "+RGPL+" RGSM= "+RGSM+" CREATE_INDEX=true"
-                subprocess.Popen([bwa_init], shell=True).wait()
-                subprocess.Popen([conv], shell=True).wait()
-                subprocess.Popen([corr_cmd], shell=True).wait()
-                count="awk 'NR%4 == 2 {lengths[length($0)]++} END {for (l in lengths) {print l, lengths[l]}}' "+F_fq
-                count=subprocess.check_output([count], universal_newlines=True, shell=True)
-                count=str.strip(count)
-                length, reads = str.split(count)
-                vcf_dir=path+"/VCF_Outputs/"
-                if not os.path.isdir(vcf_dir):
-                    vcf_out=os.makedirs(vcf_dir)
-                gVCF=vcf_dir+RGSM+"_raw.g.vcf"
-                fVCF=vcf_dir+RGSM+"_final.vcf"
-                HapC="java -jar "+GATK+" -T HaplotypeCaller -R "+ref+" -I "+corr_bam+" --emitRefConfidence GVCF --maxReadsInRegionPerSample "+reads+" --max_alternate_alleles 100 -nct "+t+" -dt NONE -o "+gVCF
-                Geno="java -jar "+GATK+" -T GenotypeGVCFs -R "+ref+" --variant "+gVCF+" -o "+fVCF
-                subprocess.Popen([HapC], shell=True).wait()
-                subprocess.Popen([Geno], shell=True).wait()
-                db_dir=path+"/Database/"
-                if not os.path.isdir(db_dir):
-                    com_out=os.makedirs(db_dir)
-                db_it=db_dir+"temp.fasta"
-                db_ft=db_dir+RGSM+"_temp_db.fasta"
-                db_f=db_dir+RGSM+"_final_db.fasta"
-                db_cmd="java -jar "+Biostars+" -R "+ref+" "+fVCF+" -x "+length+" -o "+db_it
-                subprocess.Popen([db_cmd], shell=True).wait()
-                linear="awk '/^>/ {printf("+'"\\n%s\\n"'+",$0);next; } { printf("+'"%s"'+",$0);}  END {printf("+'"\\n"'+");}' < "+db_it+" > "+db_ft
-                rename="""awk '/^>/{print """+'">'+RGSM+'_" ++i; next}'+"{"+"print"+"}'"+" < "+db_ft+" > "+db_f
-                subprocess.Popen([linear], shell=True).wait()
-                subprocess.Popen([rename], shell=True).wait()
-                os.remove(db_it)
-                os.remove(db_ft)
-                db_ind="bwa index "+db_f
-                subprocess.Popen([db_ind], shell=True).wait()
-                f_dir=path+"/Final_Mapping/"
-                if not os.path.isdir(f_dir):
-                    f_out=os.makedirs(f_dir)
-                res_dir=path+"/Results/"
-                if not os.path.isdir(res_dir):
-                    res_out=os.makedirs(res_dir)
-                stats=res_dir+RGSM+"_stats.csv"
-                f_sam=f_dir+RGSM+"_final_map.sam"
-                f_bam=f_dir+RGSM+"_final_map.bam"
-                f_bwa="bwa mem "+db_f+" "+F_fq+" -t "+t+" > "+f_sam
-                f_conv="samtools view -b "+f_sam+ " | samtools sort -o "+f_bam
-                sam_ind="samtools index "+f_bam
-                sam_stat="samtools idxstats "+f_bam+" > "+stats
-                sta_col='sed -i 1i"Sequences	Sequence_Length	Mapped_Reads	Unmapped_Reads" '+stats
-                subprocess.Popen([f_bwa], shell=True).wait()
-                subprocess.Popen([f_conv], shell=True).wait()
-                subprocess.Popen([sam_ind], shell=True).wait()
-                subprocess.Popen([sam_stat], shell=True).wait()
-                subprocess.Popen([sta_col], shell=True).wait()
-                temp=pd.read_csv(stats, sep="\t")
-                temp=temp[temp.Mapped_Reads > 1]
-                pd.DataFrame.to_csv(temp, header=True, index=False, path_or_buf=res_dir+RGSM+"_subset_stats.csv")
-                del temp['Sequence_Length'], temp['Mapped_Reads'], temp['Unmapped_Reads']
-                pd.DataFrame.to_csv(temp, header=False, index=False, path_or_buf=res_dir+RGSM+"_seq_list.txt")
-                db=db_f
-                output=res_dir+RGSM+"_confirmed_sequences.fasta"
-                """Extract sequences from fasta database code created by
-                Dr. Jason Gallant and available from here: http://efish.zoology.msu.edu/testing-out-gist/
-                but I have slightly modified it"""
-                seq_list = [line.strip() for line in open(res_dir+RGSM+"_seq_list.txt")]                               
-                seqiter = SeqIO.parse(open(db), 'fasta')                                    
-                SeqIO.write((seq for seq in seqiter if seq.id in seq_list), output, "fasta")
-                print("Finished MetaGaAP for sample ",1+i)
+            init_sam=init_dir+ref_name+"_initial_map.sam"
+            init_bam=init_dir+ref_name+"_inital_map_sorted.bam"
+            corr_bam=init_dir+ref_name+"_final_initial_map.bam"
+            bwa_init="bwa mem "+ref+" "+F_fq+" -t "+t+" > "+init_sam
+            conv="samtools view -b "+init_sam+" | samtools sort -o "+init_bam
+            corr_cmd="picard-tools AddOrReplaceReadGroups I= "+init_bam+" O= "+corr_bam+" RGLB= "+RGLB+" RGPU= "+RGPU+" RGPL= "+RGPL+" RGSM= "+RGSM+" CREATE_INDEX=true"
+            subprocess.Popen([bwa_init], shell=True).wait()
+            subprocess.Popen([conv], shell=True).wait()
+            subprocess.Popen([corr_cmd], shell=True).wait()
+            count="awk 'NR%4 == 2 {lengths[length($0)]++} END {for (l in lengths) {print l, lengths[l]}}' "+F_fq
+            count=subprocess.check_output([count], universal_newlines=True, shell=True)
+            count=str.strip(count)
+            length, reads = str.split(count)
+            vcf_dir=path+"/VCF_Outputs/"
+            if not os.path.isdir(vcf_dir):
+                vcf_out=os.makedirs(vcf_dir)
+            gVCF=vcf_dir+RGSM+"_raw.g.vcf"
+            fVCF=vcf_dir+RGSM+"_final.vcf"
+            HapC="java -jar "+GATK+" -T HaplotypeCaller -R "+ref+" -I "+corr_bam+" --emitRefConfidence GVCF --maxReadsInRegionPerSample "+reads+" --max_alternate_alleles 100 -nct "+t+" -dt NONE -o "+gVCF
+            Geno="java -jar "+GATK+" -T GenotypeGVCFs -R "+ref+" --variant "+gVCF+" -o "+fVCF
+            subprocess.Popen([HapC], shell=True).wait()
+            subprocess.Popen([Geno], shell=True).wait()
+            db_dir=path+"/Database/"
+            if not os.path.isdir(db_dir):
+                com_out=os.makedirs(db_dir)
+            db_it=db_dir+"temp.fasta"
+            db_ft=db_dir+RGSM+"_temp_db.fasta"
+            db_f=db_dir+RGSM+"_final_db.fasta"
+            db_cmd="java -jar "+Biostars+" -R "+ref+" "+fVCF+" -x "+length+" -o "+db_it
+            subprocess.Popen([db_cmd], shell=True).wait()
+            linear="awk '/^>/ {printf("+'"\\n%s\\n"'+",$0);next; } { printf("+'"%s"'+",$0);}  END {printf("+'"\\n"'+");}' < "+db_it+" > "+db_ft
+            rename="""awk '/^>/{print """+'">'+RGSM+'_" ++i; next}'+"{"+"print"+"}'"+" < "+db_ft+" > "+db_f
+            subprocess.Popen([linear], shell=True).wait()
+            subprocess.Popen([rename], shell=True).wait()
+            os.remove(db_it)
+            os.remove(db_ft)
+            db_ind="bwa index "+db_f
+            subprocess.Popen([db_ind], shell=True).wait()
+            f_dir=path+"/Final_Mapping/"
+            if not os.path.isdir(f_dir):
+                f_out=os.makedirs(f_dir)
+            res_dir=path+"/Results/"
+            if not os.path.isdir(res_dir):
+                res_out=os.makedirs(res_dir)
+            stats=res_dir+RGSM+"_stats.csv"
+            f_sam=f_dir+RGSM+"_final_map.sam"
+            f_bam=f_dir+RGSM+"_final_map.bam"
+            f_bwa="bwa mem "+db_f+" "+F_fq+" -t "+t+" > "+f_sam
+            f_conv="samtools view -b "+f_sam+ " | samtools sort -o "+f_bam
+            sam_ind="samtools index "+f_bam
+            sam_stat="samtools idxstats "+f_bam+" > "+stats
+            sta_col='sed -i 1i"Sequences	Sequence_Length	Mapped_Reads	Unmapped_Reads" '+stats
+            subprocess.Popen([f_bwa], shell=True).wait()
+            subprocess.Popen([f_conv], shell=True).wait()
+            subprocess.Popen([sam_ind], shell=True).wait()
+            subprocess.Popen([sam_stat], shell=True).wait()
+            subprocess.Popen([sta_col], shell=True).wait()
+            temp=pd.read_csv(stats, sep="\t")
+            temp=temp[temp.Mapped_Reads > 1]
+            pd.DataFrame.to_csv(temp, header=True, index=False, path_or_buf=res_dir+RGSM+"_subset_stats.csv")
+            del temp['Sequence_Length'], temp['Mapped_Reads'], temp['Unmapped_Reads']
+            pd.DataFrame.to_csv(temp, header=False, index=False, path_or_buf=res_dir+RGSM+"_seq_list.txt")
+            db=db_f
+            output=res_dir+RGSM+"_confirmed_sequences.fasta"
+            """Extract sequences from fasta database code created by
+            Dr. Jason Gallant and available from here: http://efish.zoology.msu.edu/testing-out-gist/
+            but I have slightly modified it"""
+            seq_list = [line.strip() for line in open(res_dir+RGSM+"_seq_list.txt")]                               
+            seqiter = SeqIO.parse(open(db), 'fasta')                                    
+            SeqIO.write((seq for seq in seqiter if seq.id in seq_list), output, "fasta")
+            print("Finished MetaGaAP for sample ",1+i)
         elif meta == 'n':
             print("Ending MetaGaAP. Goodbye!")
 elif multi_ref == 's':
