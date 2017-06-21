@@ -32,7 +32,7 @@ If any bugs or issues exist, please use the issue tracked so I can fix it.
 
 Note: Pre-compiled Biostar175929 tool is now included within the additional scripts folder with permissions from the author Pierre Lindenbaum.
 
-MetaGaAP-Py requires the follow the instructions below as it is different than the other pipelines: Note: This assumes you have pip3 and python 3.x installed. MetaGaAP-Py was coded in Python 3.6.1.
+MetaGaAP-Py requires the following instructions below as it is different than the other pipelines: Note: This assumes you have pip3 and python 3.x installed. MetaGaAP-Py was coded in Python 3.6.1.
 
 1. You need to have samtools (1.3 or above), bwa, picard-tools (2.9 or above) in your path. GATK (3.6 or above) and the Biostar175929 tool don't need to be in your path but you will be prompted to select GATK and prompted to select the IMG_pipelines directory so it can use the biostar175929 tool located in the additional scripts folder.
 
