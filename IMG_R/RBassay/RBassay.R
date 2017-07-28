@@ -1,4 +1,4 @@
-# RBassay- version 1.0
+# RBassay- version 1.1
 # Copyright (c) 2016 Christopher Noune
 
 #Install Packages - Function found on (http://stackoverflow.com/questions/9341635/check-for-installed-packages-before-running-install-packages)
@@ -42,9 +42,9 @@ attach(Ba_Stats)
 Ba_Stats.y <- cbind(corrected_mortality, corrected_alive)
 #Calculates results based on ST50 or LC50
 if (Ba == "ST50"){
-   Ba_Stats.model = glm(Ba_Stats.y~log(time), family = binomial(logit))
+  Ba_Stats.model = glm(Ba_Stats.y~log(time), family = quasibinomial(logit))
 } else {
-  Ba_Stats.model = glm(Ba_Stats.y~log(dose), family = binomial(logit))
+  Ba_Stats.model = glm(Ba_Stats.y~log(dose), family = quasibinomial(logit))
 }
 
 #Results as a log
@@ -52,3 +52,4 @@ Result <- dose.p(Ba_Stats.model, p = 0.5)
 #Transforms into a normal number. Note: The Dose column in the result is the final result regardless of ST50 or LC50.
 transformed_result <- exp(Result)
 transformed_result
+capture.output(summary(Ba_Stats.model), file="model_output.txt")
