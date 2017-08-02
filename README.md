@@ -18,8 +18,7 @@ At least a 4 core CPU.
 
 At least 20GB of storage for each analysis per dataset.
 
-# MetaGaAP-Py - Please cite the original MetaGaAP publication (and cite this: Noune, C. and Hauxwell, C. 2017, Enhanced Pipeline 'MetaGaAP-Py' for the Analysis of Quasispecies and Non-Model Microbial Populations using Ultra-Deep 'Meta-barcode' Sequencing. bioRxiv.)
-.
+# MetaGaAP-Py - Please cite the original MetaGaAP publication and the bioRxiv pre-print.
 
 Build 3 is available for download and will be the last major revision to MetaGaAP. Please use MetaGaAP-Py from now on as this will be the supported version. The bash implementation has been shifted and renamed to MetaGaAP-Legacy and will no longer be maintained.
 
@@ -82,9 +81,12 @@ Noune, C. The Invertebrates & Microbiology Group Pipelines, GitHub, Queensland U
 
 Below you will find the individual citations for each pipeline
 
-# Citing MetaGaAP
+# Citing MetaGaAP and MetaGaAP-Py
 
 Noune, C.; Hauxwell, C. MetaGaAP: A Novel Pipeline to Estimate Community Composition and Abundance from Non-Model Sequence Data. Biology 2017, 6, 14
+
+Noune, C. and Hauxwell, C. 2017, Enhanced Pipeline 'MetaGaAP-Py' for the Analysis of Quasispecies and Non-Model Microbial Populations using Ultra-Deep 'Meta-barcode' Sequencing. bioRxiv.
+
 
 # Citing the Invertebrates & Microbiology Group Assembly Pipeline
 
