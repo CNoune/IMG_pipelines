@@ -1,7 +1,7 @@
 #!/bin/bash
 # jumpto function built from https://bobcopeland.com/blog/2012/10/goto-in-bash/
 # MetaGaAP - version 1.0 - build 16
-# Copyright (c) 2016 Christopher Noune
+# Authored by Christopher Noune & Caroline Hauxwell
 FILETIME=`date +%T`
 FILEDATE=`date +%F`
 FILEDATETIME=$FILEDATE-$FILETIME
