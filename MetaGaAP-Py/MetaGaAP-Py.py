@@ -3,7 +3,7 @@
 MetaGaAP-Py - build 3.1 (Ammended 21/06/2017)
 Start Date - 16 May 2017
 End Date -  21 May 2017
-By Christopher Noune
+By Christopher Noune & Caroline Hauxwell
 """
 
 import os
