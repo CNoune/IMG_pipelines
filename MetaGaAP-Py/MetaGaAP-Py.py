@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-MetaGaAP-Py - build 3.1 (Ammended 21/06/2017)
+MetaGaAP-Py - build 3.2 (Ammended 24/08/2017)
 Start Date - 16 May 2017
 End Date -  21 May 2017
 By Christopher Noune & Caroline Hauxwell
@@ -350,11 +350,14 @@ elif multi_ref == 's':
                     continue
                 checksums.add(checksum)
                 yield record
+        """ This is not working at the moment. Comes up with a type error.
         if __name__ == '__main__':
             cpu=mp.cpu_count()
             pool = mp.Pool(cpu)
             records = remove_dup_seqs(SeqIO.parse(db_m, "fasta"))
-            count = pool.map(SeqIO.write(records, db_u, "fasta"))        
+            count = pool.map(SeqIO.write(records, db_u, "fasta"))"""
+        records = remove_dup_seqs(SeqIO.parse(db_m, "fasta"))
+        SeqIO.write(records, db_u, "fasta")
         db_ul=db_m_dir+ref_name+"_unique_db.fasta"
         linear="awk '/^>/ {printf("+'"\\n%s\\n"'+",$0);next; } { printf("+'"%s"'+",$0);}  END {printf("+'"\\n"'+");}' < "+db_u+" > "+db_ul
         subprocess.Popen([linear], shell=True).wait()
