@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-MetaGaAP-Py - build 3.2 (Ammended 24/08/2017)
+MetaGaAP-Py - build 3.3 (Ammended 25/08/2017)
 Start Date - 16 May 2017
 End Date -  21 May 2017
 By Christopher Noune & Caroline Hauxwell
@@ -24,7 +24,7 @@ if platform.startswith('linux'):
 gc.enable()
 user= getpass.getuser()
 
-print('Welcome',user,"to MetaGaAP-Py (build 3). Lets begin.")
+print('Welcome',user,"to MetaGaAP-Py (build 3.3). Lets begin.")
 print("Note: This is a highly optimised implementation. Directories will be automatically created.")
 wrkdir=str(input("Do you wish to set a working directory (y/n)? "))
 while wrkdir not in ['y', 'n']:
@@ -198,6 +198,15 @@ elif multi_ref == 's':
     root.withdraw()
     ref = filedialog.askopenfilename()
     ref_name, ref_ext = os.path.splitext(os.path.basename(ref))
+    bi="bwa index "+ref
+    pidict="picard-tools CreateSequenceDictionary R="+ref+" O="+ref_name+".dict"
+    sam_ind="samtools faidx "+ref
+    subprocess.Popen([bi], shell=True).wait()
+    subprocess.Popen([pidict], shell=True).wait()
+    subprocess.Popen([sam_ind], shell=True).wait()
+    RGPL = str(input("Please specify the sequencing platform i.e. IonTorrent, Illumina, 454, etc, etc: "))
+    RGPU = str(input("Please specify the sequencing unit i.e. PGM, NextSeq, GS-FLX, etc, etc: "))
+    RGLB = str(input("Please specify the library name: "))    
     for i in range(multi_num):
         if i >= multi_num:
             continue
@@ -207,9 +216,6 @@ elif multi_ref == 's':
         root.withdraw()
         F_fq = filedialog.askopenfilename()
         fq_name, fq_ext = os.path.splitext(os.path.basename(F_fq))
-        RGPL = str(input("Please specify the sequencing platform i.e. IonTorrent, Illumina, 454, etc, etc: "))
-        RGPU = str(input("Please specify the sequencing unit i.e. PGM, NextSeq, GS-FLX, etc, etc: "))
-        RGLB = str(input("Please specify the library name: "))
         RGSM=str(input("Please specify the sample name: "))    
         clean=str(input("Skip cleaning? (y/n): "))
         while clean not in ['y', 'n']:
@@ -247,12 +253,6 @@ elif multi_ref == 's':
             meta=str(input("Do you wish to begin the MetaGaAP process? (y/n): "))
         if meta == 'y':
             print("Starting MetaGaAP for sample ",1+i)
-            bi="bwa index "+ref
-            pidict="picard-tools CreateSequenceDictionary R="+ref+" O="+ref_name+".dict"
-            sam_ind="samtools faidx "+ref
-            subprocess.Popen([bi], shell=True).wait()
-            subprocess.Popen([pidict], shell=True).wait()
-            subprocess.Popen([sam_ind], shell=True).wait()
             init_dir=path+"/Initial_Mapping/"
             if not os.path.isdir(init_dir):
                 init_out=os.makedirs(init_dir)
