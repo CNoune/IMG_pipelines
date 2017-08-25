@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-MetaGaAP-Py - build 3.3.1 (Ammended 25/08/2017)
+MetaGaAP-Py - build 3.3.2 (Ammended 25/08/2017)
 Start Date - 16 May 2017
 End Date -  21 May 2017
 By Christopher Noune & Caroline Hauxwell
@@ -24,7 +24,7 @@ if platform.startswith('linux'):
 gc.enable()
 user= getpass.getuser()
 
-print('Welcome',user,"to MetaGaAP-Py (build 3.3). Lets begin.")
+print('Welcome',user,"to MetaGaAP-Py (build 3.3.2). Lets begin.")
 print("Note: This is a highly optimised implementation. Directories will be automatically created.")
 wrkdir=str(input("Do you wish to set a working directory (y/n)? "))
 while wrkdir not in ['y', 'n']:
@@ -43,10 +43,8 @@ input("Press Enter to specify where GATK is: ")
 root = tk.Tk()
 root.withdraw()
 GATK = filedialog.askopenfilename()
-input("Press Enter to specify where the IMG Pipelines Directory is: ")
-root = tk.Tk()
-root.withdraw()
-IMG = filedialog.askdirectory()
+cur=os.path.dirname(os.path.abspath("MetaGaAP-Py.py"))
+IMG=os.path.abspath(os.path.join(cur,os.pardir))
 Biostars=IMG+"/Additional_Scripts/biostar175929.jar"
 multi_num=int(input("Please specify the number of samples you wish to process: "))
 print("Note: Single reference multi-sample processing will produce a merged database. If you are processing multiple references, it will produce multiple databases.")
