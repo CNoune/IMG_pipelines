@@ -111,8 +111,8 @@ if multi_ref == 'm':
         if meta == 'y':
             print("Starting MetaGaAP for sample ",1+i)
             bi="bwa index "+ref
-            ref_name= os.path.dirname(os.path.abspath(ref))+"/"+ref_name
-            pidict="picard-tools CreateSequenceDictionary R="+ref+" O="+ref_name+".dict"
+            dict= os.path.dirname(os.path.abspath(ref))+"/"+ref_name
+            pidict="picard-tools CreateSequenceDictionary R="+ref+" O="+dict+".dict"
             sam_ind="samtools faidx "+ref
             subprocess.Popen([bi], shell=True).wait()
             subprocess.Popen([pidict], shell=True).wait()
@@ -200,7 +200,7 @@ elif multi_ref == 's':
     ref = filedialog.askopenfilename()
     ref_name, ref_ext = os.path.splitext(os.path.basename(ref))
     bi="bwa index "+ref
-    ref_name= os.path.dirname(os.path.abspath(ref))+"/"+ref_name
+    dict= os.path.dirname(os.path.abspath(ref))+"/"+ref_name
     pidict="picard-tools CreateSequenceDictionary R="+ref+" O="+ref_name+".dict"
     sam_ind="samtools faidx "+ref
     subprocess.Popen([bi], shell=True).wait()
