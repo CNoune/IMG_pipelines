@@ -27,7 +27,7 @@ Genotype_Samples <- vegdist(t(Genotype_proportions), method = "bray")
 Genotype_Clusters.2 <- hclust(Genotype_Samples, "aver")
 #Annotating the heatmap
 setHook("grid.newpage", function() pushViewport(viewport(x=1,y=1,width=0.9, height=0.9, name="vp", just=c("right","top"))), action="prepend")
-pheatmap(Genotype_proportions, cluster_rows = Genotype_Clusters, cluster_cols = Genotype_Clusters.2, main = "BRO-A Time-Course Heatmap")
+pheatmap(Genotype_proportions, cluster_rows = Genotype_Clusters, cluster_cols = Genotype_Clusters.2)
 setHook("grid.newpage", NULL, "replace")
 grid.text("Sample", y=-0.07, gp=gpar(fontsize=16))
 grid.text("Genotype", x=-0.07, rot=90, gp=gpar(fontsize=16))
