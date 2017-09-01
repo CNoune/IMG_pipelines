@@ -15,6 +15,6 @@ RBassaySKM - Single Kaplan Meier and RBassayMKM - Multiple Kaplan Meier instruct
 
 RBassayV1 instructions - Use V2 instead as it accounts for poor fitting models, but you can still use V1 if it doesnt bother you and if you want to calculate ST50 using cumulative counts but I recommend using the SKM and MKM scripts instead.
 
-1.Input your data into the Bioassay scoresheet - Raw data scoresheet. Note: If your data is ST50 related change the columns to reflect time not dose
+1. Input your data into the Bioassay scoresheet - Raw data scoresheet. Note: If your data is ST50 related change the columns to reflect time not dose
 2. Export the dose (or time), corrected_mortality and corrected_alive columns into a new .csv file
 3. Run IMG_RBassayV1 in R Studio. Note: You will need to make changes within the script - see comments
