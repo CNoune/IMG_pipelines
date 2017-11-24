@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """
-MetaGaAP-Py - build 3.3.2 (Ammended 25/08/2017)
+MetaGaAP-Py - build 3.3.3 (Ammended 24/11/2017)
 Start Date - 16 May 2017
 End Date -  21 May 2017
 By Christopher Noune & Caroline Hauxwell
 """
-
 import os
 import tkinter as tk
 from tkinter import filedialog
@@ -23,8 +22,20 @@ if platform.startswith('linux'):
 
 gc.enable()
 user= getpass.getuser()
+        
+"""Remove duplicate function was created by Dr. Peter Cock and 
+found here: http://lists.open-bio.org/pipermail/biopython/2010-April/012615.html
+but I have slightly modified it to allow for multiprocessing"""
+def remove_dup_seqs(records):
+    checksums = set()
+    for record in records:
+        checksum = seguid(record.seq)
+        if checksum in checksums:
+           continue
+        checksums.add(checksum)
+        yield record
 
-print('Welcome',user,"to MetaGaAP-Py (build 3.3.2). Lets begin.")
+print('Welcome',user,"to MetaGaAP-Py (build 3.3.3). Lets begin.")
 print("Note: This is a highly optimised implementation. Directories will be automatically created.")
 wrkdir=str(input("Do you wish to set a working directory (y/n)? "))
 while wrkdir not in ['y', 'n']:
@@ -339,17 +350,6 @@ elif multi_ref == 's':
         cat="cat "+db_dir+"*_final_db.fasta > "+db_m
         subprocess.Popen([cat], shell=True).wait()
         db_u=db_m_dir+"temp_unique_db.fasta"
-        """Remove duplicate function was created by Dr. Peter Cock and 
-        found here: http://lists.open-bio.org/pipermail/biopython/2010-April/012615.html
-        but I have slightly modified it to allow for multiprocessing"""
-        def remove_dup_seqs(records):
-            checksums = set()
-            for record in records:
-                checksum = seguid(record.seq)
-                if checksum in checksums:
-                    continue
-                checksums.add(checksum)
-                yield record
         """ This is not working at the moment. Comes up with a type error.
         if __name__ == '__main__':
             cpu=mp.cpu_count()
