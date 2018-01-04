@@ -8,7 +8,7 @@ FILEDATETIME=$FILEDATE-$FILETIME
 echo "Press [ENTER] to select the IMG_pipelines Directory"
 read enter
 IMG_dir="`zenity --file-selection --directory`"
-LOGFILE=$IMG_dir/Legacy/Logs/MetaGaAP_Logging.$FILEDATETIME.log
+LOGFILE=$IMG_dir/Legacy/Logs/MetaGaAP_Legacy/MetaGaAP_Logging.$FILEDATETIME.log
 exec &> >(tee -a $LOGFILE >&2 )
 
 function jumpto 
