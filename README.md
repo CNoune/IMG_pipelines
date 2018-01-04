@@ -1,14 +1,12 @@
 # Intro
-These pipelines were built to orginally analyse baculoviruses and are essentially wrappers for existing software but pre-optimised to help get rid of any guess work. The pipelines require various software to be pre-installed before running so make sure you read each individual readme (documentations folder). If you use the pipelines please don't forget to cite them and cite the software it uses.
+These pipelines were built to orginally analyse baculoviruses and are essentially wrappers for existing software but pre-optimised to help get rid of any guess work. The pipelines require various software to be pre-installed before running so make sure you read each individual readme. If you use the pipelines please don't forget to cite them and cite the software it uses.
 
 # Author
 Christopher Noune: https://www.researchgate.net/profile/Christopher_Noune
 
 # In Development
 
-I am slowly converting everything from Bash to Python 3 and attempting to introduce cross-platform compatibility.
-
-The Assembly Pipeline will be shifted to legacy soon and ported to Python but I do not have an ETA.
+MetaGaAP 2 - It has re-entered active development with a hope of release by end of 2018.
 
 # System Requirements - MetaGaAP and Assembly Pipeline
 
