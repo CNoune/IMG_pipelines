@@ -10,11 +10,11 @@ do
     case $opt in
         "IMG_AP")
             echo "You have selected IMG_AP"
-		bash IMG_pipelines/IMG_AP/IMG_AP.sh
+		bash IMG_pipelines/Legacy/IMG_AP/IMG_AP.sh
             ;;
         "MetaGaAP")
             echo "You have selected MetaGaAP. Note: This is currently build 14 and may contain bugs."
-		bash IMG_pipelines/MetaGaAP/MetaGaAP_Back-ends/Set_wrk_dir.sh
+		bash IMG_pipelines/Legacy/MetaGaAP_Legacy/MetaGaAP_Back-ends/Set_wrk_dir.sh
 		echo -e "MetaGaAP Analysis Complete. Please type: \n(1) for IMG_AP \n(2) for MetaGaAP \n(4) to quit."
             ;;
 	"Install Most Packages")
