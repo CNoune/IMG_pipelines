@@ -657,10 +657,10 @@ extract_seq:
 			echo "Merging and subsetting files"
 			cat $stat_merge_dir/*stats.csv > $stat_merge_out/Merged_stats.csv
 			subset="$stat_merge_out/Merged_stats.csv"
-			Rscript $IMG_dir/MetaGaAP/MetaGaAP_Back-ends/Seq_List.R $seq_list_dir $subset
+			Rscript $IMG_dir/Legacy/MetaGaAP_Legacy/MetaGaAP/MetaGaAP_Back-ends/Seq_List.R $seq_list_dir $subset
 			rm $subset
 			rm Subset_stats.csv
-			Rscript $IMG_dir/MetaGaAP/MetaGaAP_Back-ends/Subset_Stats.R $stat_merge_dir
+			Rscript $IMG_dir/Legacy/MetaGaAP_Legacy/MetaGaAP_Back-ends/Subset_Stats.R $stat_merge_dir
 			mv Sequence_names.txt $seq_list_dir
 			echo "Merging and subsetting files complete. Proceed to Fasta extraction."
 			echo "Press [ENTER] to specify the database"
@@ -690,7 +690,7 @@ stat_no_merge:
 			read enter
 			seq_list_dir="`zenity --file-selection --directory`"
 			echo "Subsetting file $i"
-			Rscript $IMG_dir/MetaGaAP/MetaGaAP_Back-ends/Seq_List.R $seq_list_dir $subset 
+			Rscript $IMG_dir/Legacy/MetaGaAP_Legacy/MetaGaAP_Back-ends/Seq_List.R $seq_list_dir $subset 
 			mv Sequence_names.txt Sequence_names_$i.txt
 			mv Sequence_names_$i.txt $seq_list_dir
 			mv Subset_stats.csv Subset_stats_$i.csv
