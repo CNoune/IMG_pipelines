@@ -6,7 +6,7 @@ Christopher Noune: https://www.researchgate.net/profile/Christopher_Noune
 
 # In Development
 
-MetaGaAP 2 - It has re-entered active development with a hope of release by end of 2018.
+~~MetaGaAP 2 - It has re-entered active development with a hope of release by end of 2018.~~
 
 # System Requirements - MetaGaAP and Assembly Pipeline
 
