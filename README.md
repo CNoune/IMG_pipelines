@@ -4,6 +4,8 @@ These pipelines were built to orginally analyse baculoviruses and are essentiall
 # Author
 Christopher Noune: https://www.researchgate.net/profile/Christopher_Noune
 
+Note: I am not longer with the Invertebrates and Microbiology Group and therefore I will only provide updates if needed/requested for this repository. 
+
 # In Development
 
 ~~MetaGaAP 2 - It has re-entered active development with a hope of release by end of 2018.~~
