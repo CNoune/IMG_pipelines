@@ -11,7 +11,7 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 
-input("Press enter to specify fastq/fasta file for conversion: ")
+input("Press enter to specify fastq file for conversion: ")
 root = tk.Tk()
 root.withdraw()
 file = filedialog.askopenfilename()
