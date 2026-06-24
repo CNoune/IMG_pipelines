@@ -8,6 +8,30 @@ Note: I am not longer with the Invertebrates and Microbiology Group and therefor
 
 # In Development
 
+**MetaGaAP 2** — a cross-platform (Windows / Linux / macOS), Java-free rewrite of MetaGaAP,
+delivered as a self-contained local web app (FastAPI backend + React frontend). It keeps the
+original method but replaces every Java/unmaintained dependency: the combinatorial haplotype
+step that used `biostar175929.jar` is reimplemented in pure Python, and GATK is replaced by a
+built-in frequency caller (portable engine) or `bcftools`/`lofreq` (optional native engine).
+The source lives in [`MetaGaAP-2/`](MetaGaAP-2/) — see its [README](MetaGaAP-2/README.md) for
+installation and usage.
+
+> ⚠️ **Experimental — NOT validated or thoroughly tested. Do not use for published results.**
+>
+> MetaGaAP 2 is an early rewrite. So far it only:
+> - builds, and its unit tests pass (combinatorial generator, VCF I/O, the portable caller, job plumbing); and
+> - has been run end to end on a **single Windows machine** against a **small synthetic** dataset, plus one manual UI walkthrough.
+>
+> It has **NOT** been:
+> - scientifically validated, or benchmarked for output parity against the original MetaGaAP / MetaGaAP-Py;
+> - tested on **real sequencing data**, at scale, or for performance;
+> - tested on **Linux or macOS**, nor with **paired-end** reads or **multi-sample / merged-database** runs;
+> - exercised at all on the optional **native engine** (`minimap2` / `bwa-mem2` / `samtools` / `bcftools` / `lofreq` / `fastp`).
+>
+> Treat it as a proof-of-concept under active development. For any real analysis, use
+> **MetaGaAP-Py** (below) until MetaGaAP 2 has been properly validated, and please report
+> issues via the issue tracker.
+
 ~~MetaGaAP 2 - It has re-entered active development with a hope of release by end of 2018.~~
 
 # System Requirements - MetaGaAP and Assembly Pipeline
