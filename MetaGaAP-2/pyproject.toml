@@ -1,0 +1,92 @@
+# MetaGaAP 2 - backend package definition (PEP 621).
+#
+# A cross-platform (Windows / Linux / macOS), Java-free rebuild of the MetaGaAP
+# quasispecies / meta-barcode pipeline, delivered as a local web application
+# (FastAPI backend + React 19 frontend).
+#
+# The runtime dependencies below are deliberately restricted to packages that
+# publish wheels for Windows, Linux and macOS, so the default "portable" engine
+# works everywhere with a plain `pip install`. Native binaries (minimap2,
+# samtools, bcftools, lofreq, fastp, bwa-mem2) are optional and provided via
+# `environment.yml` (conda/bioconda) for the "native" engine.
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metagaap2"
+version = "2.0.0"
+description = "Cross-platform, Java-free quasispecies / meta-barcode reconstruction pipeline (local web app)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "C. Noune" },
+    { name = "C. Hauxwell" },
+]
+keywords = [
+    "bioinformatics",
+    "quasispecies",
+    "meta-barcode",
+    "haplotype",
+    "variant-calling",
+    "pipeline",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+# Runtime dependencies. Every package here ships Windows + Linux + macOS wheels,
+# guaranteeing the portable engine installs on native Windows without conda.
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic>=2",
+    "python-multipart",
+    "cutadapt",
+    "dnaio",
+    "xopen",
+    "pyfastx",
+    "parasail",
+    "numpy",
+    "biopython",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[project.urls]
+Homepage = "https://github.com/cnoune/MetaGaAP-2"
+Repository = "https://github.com/cnoune/MetaGaAP-2"
+
+[project.scripts]
+# `metagaap2` on the command line launches the local web app.
+metagaap2 = "metagaap2.__main__:main"
+
+# --------------------------------------------------------------------------- #
+# setuptools configuration
+# --------------------------------------------------------------------------- #
+# The Python sources live under `backend/`, so the package root is remapped.
+[tool.setuptools]
+packages = ["metagaap2", "metagaap2.engines"]
+package-dir = { "" = "backend" }
+
+# Ship the built frontend (Vite emits to backend/metagaap2/webui) inside the
+# wheel so `python -m metagaap2` can serve the UI with no separate web server.
+# The directory is produced by `npm run build` in `frontend/` before packaging.
+[tool.setuptools.package-data]
+metagaap2 = ["webui/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]

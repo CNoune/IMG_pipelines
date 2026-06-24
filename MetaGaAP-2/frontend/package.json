@@ -1,0 +1,27 @@
+{
+  "name": "metagaap2-frontend",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "MetaGaAP 2 local web UI (React 19 + Vite 8 + Tailwind 4)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.9.0",
+    "vite": "^8.0.0"
+  }
+}

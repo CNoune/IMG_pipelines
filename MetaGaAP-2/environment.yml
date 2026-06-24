@@ -1,0 +1,46 @@
+# MetaGaAP 2 - conda environment for the full (native + portable) install.
+#
+# Creates an environment with Python, the cross-platform Python dependencies
+# (portable engine) AND the optional native binaries (native engine) sourced
+# from bioconda. The native binaries are Linux/macOS first-class; on Windows the
+# portable engine works without conda, or run this environment under WSL.
+#
+# Usage:
+#   conda env create -f environment.yml
+#   conda activate metagaap2
+#   pip install -e .            # install the metagaap2 package itself
+#
+# Build the frontend before serving (one-off, requires Node):
+#   cd frontend && npm install && npm run build
+
+name: metagaap2
+
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - python=3.12
+  - pip
+
+  # --- Native engine binaries (optional, auto-detected on PATH) ------------- #
+  - minimap2
+  - bwa-mem2
+  - samtools
+  - bcftools
+  - lofreq
+  - fastp
+
+  # --- Python dependencies installed via pip (matches pyproject) ------------ #
+  - pip:
+      - fastapi
+      - uvicorn[standard]
+      - pydantic>=2
+      - python-multipart
+      - cutadapt
+      - dnaio
+      - xopen
+      - pyfastx
+      - parasail
+      - numpy
+      - biopython
